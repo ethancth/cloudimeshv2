@@ -18,7 +18,7 @@ $configData = Helper::appClasses();
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 p-0">
       <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-        <img src="{{ asset('assets/img/illustrations/auth-login-illustration-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-login-illustration-light.png" data-app-dark-img="illustrations/auth-login-illustration-dark.png">
+        <img src="{{ asset('assets/img/illustrations/login-v2-'.$configData['style'].'.svg') }}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/login-v2-light.svg" data-app-dark-img="illustrations/login-v2-dark.svg">
 
         <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
       </div>
@@ -96,23 +96,6 @@ $configData = Helper::appClasses();
           @endif
         </p>
 
-        <div class="divider my-4">
-          <div class="divider-text">or</div>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-            <i class="tf-icons fa-brands fa-facebook-f fs-5"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-            <i class="tf-icons fa-brands fa-google fs-5"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-            <i class="tf-icons fa-brands fa-twitter fs-5"></i>
-          </a>
-        </div>
       </div>
     </div>
     <!-- /Login -->

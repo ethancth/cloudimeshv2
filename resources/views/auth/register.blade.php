@@ -18,7 +18,7 @@ $configData = Helper::appClasses();
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 p-0">
       <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-        <img src="{{ asset('assets/img/illustrations/auth-register-illustration-'.$configData['style'].'.png') }}" alt="auth-register-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-register-illustration-light.png" data-app-dark-img="illustrations/auth-register-illustration-dark.png">
+        <img src="{{ asset('assets/img/illustrations/boy-with-rocket-'.$configData['style'].'.png') }}" alt="auth-register-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/boy-with-rocket-light.png" data-app-dark-img="illustrations/boy-with-rocket-dark.png">
 
         <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="auth-register-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
       </div>
@@ -41,7 +41,7 @@ $configData = Helper::appClasses();
         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
           @csrf
           <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
+            <label for="username" class="form-label">Name</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="username" name="name" placeholder="johndoe" autofocus value="{{ old('name') }}" />
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -111,23 +111,6 @@ $configData = Helper::appClasses();
           @endif
         </p>
 
-        <div class="divider my-4">
-          <div class="divider-text">or</div>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-            <i class="tf-icons fa-brands fa-facebook-f fs-5"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-            <i class="tf-icons fa-brands fa-google fs-5"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-            <i class="tf-icons fa-brands fa-twitter fs-5"></i>
-          </a>
-        </div>
       </div>
     </div>
     <!-- /Register -->
