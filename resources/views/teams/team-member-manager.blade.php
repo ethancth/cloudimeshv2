@@ -4,11 +4,11 @@
     <!-- Add Team Member -->
     <x-form-section submit="addTeamMember">
       <x-slot name="title">
-        {{ __('Add Team Member') }}
+        {{ __('Add Tenants Member') }}
       </x-slot>
 
       <x-slot name="description">
-        {{ __('Add a new team member to your team, allowing them to collaborate with you.') }}
+        {{ __('Add a new member to your tenants, allowing them to collaborate with you.') }}
       </x-slot>
 
       <x-slot name="form">
@@ -17,7 +17,7 @@
         </x-action-message>
 
         <div class="mb-3">
-          {{ __('Please provide the email address of the person you would like to add to this team. The email address must be associated with an existing account.') }}
+          {{ __('Please provide the email address of the person you would like to add to this Tenants. The email address must be associated with an existing account.') }}
         </div>
 
         <!-- Member Email -->
@@ -79,11 +79,11 @@
     <div class="mt-4">
       <x-action-section>
       <x-slot name="title">
-        {{ __('Pending Team Invitations') }}
+        {{ __('Pending Tenants Invitations') }}
       </x-slot>
 
       <x-slot name="description">
-        {{ __('These people have been invited to your team and have been sent an invitation email. They may join the team by accepting the email invitation.') }}
+        {{ __('These people have been invited to your tenants and have been sent an invitation email. They may join the tenant by accepting the email invitation.') }}
       </x-slot>
 
       <x-slot name="content">
@@ -113,11 +113,11 @@
       <!-- Manage Team Members -->
     <x-action-section>
       <x-slot name="title">
-        {{ __('Team Members') }}
+        {{ __('Tenants Members') }}
       </x-slot>
 
       <x-slot name="description">
-        {{ __('All of the people that are part of this team.') }}
+        {{ __('All of the people that are part of this Tenants.') }}
       </x-slot>
 
       <!-- Team Member List -->
@@ -211,11 +211,11 @@
   <!-- Leave Team Confirmation Modal -->
   <x-confirmation-modal wire:model.live="confirmingLeavingTeam">
     <x-slot name="title">
-      {{ __('Leave Team') }}
+      {{ __('Leave Tenants') }}
     </x-slot>
 
     <x-slot name="content">
-      {{ __('Are you sure you would like to leave this team?') }}
+      {{ __('Are you sure you would like to leave this Tenant?') }}
     </x-slot>
 
     <x-slot name="footer">
@@ -232,11 +232,11 @@
   <!-- Remove Team Member Confirmation Modal -->
   <x-confirmation-modal wire:model.live="confirmingTeamMemberRemoval">
     <x-slot name="title">
-      {{ __('Remove Team Member') }}
+      {{ __('Remove Tenants Member') }}
     </x-slot>
 
     <x-slot name="content">
-      {{ __('Are you sure you would like to remove this person from the team?') }}
+      {{ __('Are you sure you would like to remove this person from the tenant?') }}
     </x-slot>
 
     <x-slot name="footer">

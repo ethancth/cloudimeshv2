@@ -1,6 +1,6 @@
 <x-form-section submit="createTeam">
   <x-slot name="title">
-    {{ __('Team Details') }}
+    {{ __('Tenanats Details') }}
   </x-slot>
 
   <x-slot name="description">
@@ -9,7 +9,7 @@
 
   <x-slot name="form">
     <div class="mb-1">
-      <x-label class="form-label" value="{{ __('Team Owner') }}" />
+      <x-label class="form-label" value="{{ __('Tenanats Owner') }}" />
 
       <div class="d-flex mt-3">
         <img class="rounded-circle" width="48" src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="mb-3">
-      <x-label class="form-label" for="name" value="{{ __('Team Name') }}" />
+      <x-label class="form-label" for="name" value="{{ __('Tenanats Name') }}" />
       <x-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
         wire:model="state.name" autofocus />
       <x-input-error for="name" />

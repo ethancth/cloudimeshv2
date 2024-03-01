@@ -1,10 +1,10 @@
 <x-form-section submit="updateTeamName">
   <x-slot name="title">
-    {{ __('Team Name') }}
+    {{ __('Tenant Name') }}
   </x-slot>
 
   <x-slot name="description">
-    {{ __('The team\'s name and owner information.') }}
+    {{ __('The tenant\'s name and owner information.') }}
   </x-slot>
 
   <x-slot name="form">
@@ -14,7 +14,7 @@
 
     <!-- Team Owner Information -->
     <div class="mb-2">
-      <x-label class="form-label" value="{{ __('Team Owner') }}" />
+      <x-label class="form-label" value="{{ __('Tenants Owner') }}" />
 
       <div class="d-flex mt-1">
         <img class="rounded-circle me-2" width="48" src="{{ $team->owner->profile_photo_url }}" alt="{{ $team->owner->name }}">
@@ -27,7 +27,7 @@
 
     <!-- Team Name -->
     <div class="mb-3">
-      <x-label class="form-label" for="name" value="{{ __('Team Name') }}" />
+      <x-label class="form-label" for="name" value="{{ __('Tenants Name') }}" />
 
       <x-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}" wire:model="state.name" :disabled="! Gate::check('update', $team)" />
 

@@ -351,22 +351,22 @@ $navbarDetached = ($navbarDetached ?? '');
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <h6 class="dropdown-header">Manage Team</h6>
+                <h6 class="dropdown-header">Manage Tenants</h6>
               </li>
               <li>
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="{{ Auth::user() ? route('teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
+                <a class="dropdown-item" href="{{ Auth::user() ? route('tenants.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
                   <i class='ti ti-settings me-2'></i>
-                  <span class="align-middle">Team Settings</span>
+                  <span class="align-middle">Tenants Settings</span>
                 </a>
               </li>
               @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
               <li>
-                <a class="dropdown-item" href="{{ route('teams.create') }}">
+                <a class="dropdown-item" href="{{ route('tenants.create') }}">
                   <i class='ti ti-user me-2'></i>
-                  <span class="align-middle">Create New Team</span>
+                  <span class="align-middle">Create New Tenants</span>
                 </a>
               </li>
               @endcan
@@ -375,7 +375,7 @@ $navbarDetached = ($navbarDetached ?? '');
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <h6 class="dropdown-header">Switch Teams</h6>
+                <h6 class="dropdown-header">Switch Tenants</h6>
               </li>
               <li>
                 <div class="dropdown-divider"></div>
