@@ -1,17 +1,11 @@
 {
   "menu": [
+
     {
-      "name": "Project",
-      "icon": "menu-icon tf-icons ti ti-project",
+      "name": "My Project",
+      "icon": "menu-icon tf-icons ti ti-book",
       "slug": "project",
       "url": "project"
-
-    },
-    {
-      "name": "User Management",
-      "icon": "menu-icon tf-icons ti ti-users",
-      "slug": "laravel-example-user-management",
-      "url": "user-management"
 
     }
 
