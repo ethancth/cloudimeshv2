@@ -51,7 +51,12 @@ $configData = Helper::appClasses();
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" value="{{ old('email') }}" />
+            @if(request()->query('email'))
+              <input type="text" class="form-control @error('email') is-invalid @enderror" readonly id="email" name="email" placeholder="john@example.com" value="{{ request()->query('email') }}" />
+            @else
+              <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" value="{{ old('email') }}" />
+
+            @endif
             @error('email')
             <span class="invalid-feedback" role="alert">
               <span class="fw-medium">{{ $message }}</span>

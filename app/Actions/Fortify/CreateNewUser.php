@@ -3,11 +3,13 @@
 namespace App\Actions\Fortify;
 
 use App\Models\Team;
+use App\Models\TeamInvitation;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Laravel\Jetstream\Contracts\AddsTeamMembers;
 use Laravel\Jetstream\Jetstream;
 
 class CreateNewUser implements CreatesNewUsers
@@ -34,7 +36,15 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
+              $check_exist=TeamInvitation::where('email','=',$user->email)->orderByDesc('id')->get();
+
+              if($check_exist->count()){
+                $this->joinTeam($check_exist[0]->id);
+                $user->current_team_id=$check_exist[0]->team_id;
+                $user->save();
+              }else{
                 $this->createTeam($user);
+              }
             });
         });
     }
@@ -46,8 +56,23 @@ class CreateNewUser implements CreatesNewUsers
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'name' => explode(' ', $user->name, 2)[0]."'s Tenants",
             'personal_team' => true,
         ]));
     }
+
+  protected function joinTeam($invitationId){
+    $model = Jetstream::teamInvitationModel();
+
+    $invitation = TeamInvitation::where('id','=',$invitationId)->firstOrFail();
+    // dd( $invitation->team->owner);
+    app(AddsTeamMembers::class)->add(
+      $invitation->team->owner,
+      $invitation->team,
+      $invitation->email,
+      $invitation->role
+    );
+
+    $invitation->delete();
+  }
 }

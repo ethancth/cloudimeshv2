@@ -5,6 +5,7 @@ use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\dashboard\Crm;
 use App\Http\Controllers\language\LanguageController;
 require_once __DIR__ . '/jetstream.php';
+require_once __DIR__ . '/fortity.php';
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
