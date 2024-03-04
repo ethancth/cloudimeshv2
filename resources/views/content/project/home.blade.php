@@ -12,10 +12,11 @@
 
 <!-- Page Scripts -->
 @section('page-script')
-  <script src="https://cdn.tailwindcss.com"></script>
 @endsection
 
 @section('content')
-
-   <livewire:projecttable/>
+  <div wire:offline>
+    This device is currently offline.
+  </div>
+   <livewire:projecttable />
 @endsection

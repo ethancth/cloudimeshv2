@@ -21,4 +21,3 @@
 <!-- END: Page JS-->
 
 @stack('modals')
-@livewireScripts

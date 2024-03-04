@@ -357,7 +357,7 @@ $navbarDetached = ($navbarDetached ?? '');
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="{{ Auth::user() ? route('tenants.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
+                <a class="dropdown-item"  href="{{ Auth::user() ? route('tenants.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
                   <i class='ti ti-settings me-2'></i>
                   <span class="align-middle">Tenants Settings</span>
                 </a>
@@ -399,7 +399,7 @@ $navbarDetached = ($navbarDetached ?? '');
                   <span class="align-middle">Logout</span>
                 </a>
               </li>
-              <form method="POST" id="logout-form" action="{{ route('logout') }}">
+              <form method="POST" id="logout-form" wire:navigate action="{{ route('logout') }}">
                 @csrf
               </form>
               @else

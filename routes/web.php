@@ -29,4 +29,9 @@ Route::middleware([
   Route::get('/user-management', [UserManagement::class, 'UserManagement'])->name('user-management');
   Route::resource('/user-list', UserManagement::class);
 
+
+  Route::get('/users', function () {
+    return view('components.welcome');
+  });
+
 });

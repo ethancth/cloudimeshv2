@@ -75,4 +75,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+
+  public function scopeSearch($query, $value){
+    $query->where('name','like',"%{$value}%")->orWhere('email','like',"%{$value}%");
+  }
+
 }
