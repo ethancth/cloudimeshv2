@@ -587,14 +587,11 @@ var __webpack_exports__ = {};
   \*******************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   toastr: function() { return /* reexport default from dynamic */ toastr_toastr__WEBPACK_IMPORTED_MODULE_0___default.a; }
+/* harmony export */   toastr: function() { return /* reexport module object */ toastr_toastr__WEBPACK_IMPORTED_MODULE_0__; }
 /* harmony export */ });
 /* harmony import */ var toastr_toastr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! toastr/toastr */ "./node_modules/toastr/toastr.js");
 /* harmony import */ var toastr_toastr__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(toastr_toastr__WEBPACK_IMPORTED_MODULE_0__);
 
-try {
-  window.toastr = (toastr_toastr__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

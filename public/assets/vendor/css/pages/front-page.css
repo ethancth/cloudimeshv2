@@ -25,23 +25,21 @@
   transition: all 0.2s ease-in-out;
 }
 
-.banner-bg-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: left;
-     object-position: left;
+.section-title {
+  position: relative;
+  font-weight: 700;
+  z-index: 1;
 }
-
-.section-title-img {
+.section-title::after {
+  content: "";
+  position: absolute;
   height: 100%;
   width: 120%;
   inset-inline-start: -12%;
-  top: 10px;
+  bottom: 0;
+  background: url("../../../img/front-pages/icons/section-title-icon.png") no-repeat left bottom;
+  background-size: contain;
+  z-index: -1;
 }
 
 .light-style body {
@@ -220,6 +218,9 @@ nav.layout-navbar.navbar-active::after {
   opacity: 0.8;
 }
 .landing-footer .footer-top {
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 3.5rem 0;
   border-top-left-radius: 3.75rem;
   border-top-right-radius: 3.75rem;
@@ -228,10 +229,6 @@ nav.layout-navbar.navbar-active::after {
   .landing-footer .footer-top {
     padding: 3rem 0;
   }
-}
-.landing-footer .footer-top .footer-bg {
-  -o-object-position: center;
-     object-position: center;
 }
 @media (min-width: 992px) {
   .landing-footer .footer-logo-description {
@@ -275,6 +272,9 @@ nav.layout-navbar.navbar-active::after {
 .light-style .landing-footer .footer-title {
   color: #fff;
 }
+.light-style .landing-footer .footer-top {
+  background-image: url("../../../img/front-pages/backgrounds/footer-bg-light.png");
+}
 .light-style .landing-footer .footer-bottom {
   background-color: #282c3e;
 }
@@ -285,6 +285,9 @@ nav.layout-navbar.navbar-active::after {
 }
 .dark-style .landing-footer .footer-title {
   color: #cfd3ec;
+}
+.dark-style .landing-footer .footer-top {
+  background-image: url("../../../img/front-pages/backgrounds/footer-bg-dark.png");
 }
 .dark-style .landing-footer .footer-bottom {
   background-color: #171925;

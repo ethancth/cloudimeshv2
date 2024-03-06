@@ -211,35 +211,10 @@ table.dataTable.table-bordered td.dtr-control.dtr-hidden + * {
   border-left-width: 1px;
 }
 
-table.dataTable.dtr-column > tbody > tr > td.control,
-table.dataTable.dtr-column > tbody > tr > th.control {
-  position: relative;
-}
-table.dataTable.dtr-column > tbody > tr > td.control:before, table.dataTable.dtr-column > tbody > tr > td.control:before,
-table.dataTable.dtr-column > tbody > tr > th.control:before,
+table.dataTable.dtr-column > tbody > tr > td.control:before,
 table.dataTable.dtr-column > tbody > tr > th.control:before {
-  position: absolute;
   line-height: 0.9em;
   font-weight: 500;
-  height: 0.85em;
-  width: 0.85em;
-  color: #fff;
-  border-radius: 1em;
-  box-sizing: content-box;
-  text-align: center;
-  font-family: "Courier New", Courier, monospace;
-  content: "+";
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-table.dataTable.dtr-column > tbody > tr.parent td.dtr-control:before,
-table.dataTable.dtr-column > tbody > tr.parent th.dtr-control:before,
-table.dataTable.dtr-column > tbody > tr.parent td.control:before,
-table.dataTable.dtr-column > tbody > tr.parent th.control:before {
-  content: "+";
 }
 
 @media screen and (max-width: 1399.98px) {

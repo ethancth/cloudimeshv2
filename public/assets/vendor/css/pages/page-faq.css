@@ -1,3 +1,9 @@
+.faq-header {
+  background: url("../../../img/pages/header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 300px !important;
+}
 .faq-header .input-wrapper {
   position: relative;
   width: 100%;
@@ -7,18 +13,6 @@
   .faq-header .input-wrapper {
     max-width: 70%;
   }
-}
-
-.faq-banner-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: left;
-     object-position: left;
 }
 
 .light-style .bg-faq-section {

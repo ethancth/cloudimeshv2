@@ -60042,9 +60042,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var highlight_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! highlight.js */ "./node_modules/highlight.js/es/index.js");
 
-try {
-  window.hljs = highlight_js__WEBPACK_IMPORTED_MODULE_0__["default"];
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

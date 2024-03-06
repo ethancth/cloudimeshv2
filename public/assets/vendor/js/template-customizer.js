@@ -11,10 +11,10 @@
 return /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[3]!./resources/assets/vendor/js/_template-customizer/_template-customizer.scss":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[3]!./resources/assets/vendor/js/_template-customizer/_template-customizer.scss ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[3]!./resources/assets/vendor/js/_template-customizer/_template-customizer.scss":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[3]!./resources/assets/vendor/js/_template-customizer/_template-customizer.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -108,10 +108,10 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 
-/***/ "./resources/assets/vendor/js/_template-customizer/_template-customizer.html?raw":
-/*!***************************************************************************************!*\
-  !*** ./resources/assets/vendor/js/_template-customizer/_template-customizer.html?raw ***!
-  \***************************************************************************************/
+/***/ "./resources/assets/vendor/js/_template-customizer/_template-customizer.html":
+/*!***********************************************************************************!*\
+  !*** ./resources/assets/vendor/js/_template-customizer/_template-customizer.html ***!
+  \***********************************************************************************/
 /***/ (function(module) {
 
 // Module
@@ -131,7 +131,7 @@ module.exports = code;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_3_template_customizer_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[3]!./_template-customizer.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[98].oneOf[1].use[3]!./resources/assets/vendor/js/_template-customizer/_template-customizer.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_3_template_customizer_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[3]!./_template-customizer.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[101].oneOf[1].use[3]!./resources/assets/vendor/js/_template-customizer/_template-customizer.scss");
 
             
 
@@ -140,11 +140,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_3_template_customizer_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_3_template_customizer_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_98_oneOf_1_use_3_template_customizer_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_101_oneOf_1_use_3_template_customizer_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -508,16 +508,13 @@ var __webpack_exports__ = {};
   !*** ./resources/assets/vendor/js/template-customizer.js ***!
   \***********************************************************/
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TemplateCustomizer: function() { return /* binding */ TemplateCustomizer; }
+/* harmony export */ });
 /* harmony import */ var _template_customizer_template_customizer_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_template-customizer/_template-customizer.scss */ "./resources/assets/vendor/js/_template-customizer/_template-customizer.scss");
-/* harmony import */ var _template_customizer_template_customizer_html_raw__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_template-customizer/_template-customizer.html?raw */ "./resources/assets/vendor/js/_template-customizer/_template-customizer.html?raw");
-/* harmony import */ var _template_customizer_template_customizer_html_raw__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_template_customizer_template_customizer_html_raw__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _template_customizer_template_customizer_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_template-customizer/_template-customizer.html */ "./resources/assets/vendor/js/_template-customizer/_template-customizer.html");
+/* harmony import */ var _template_customizer_template_customizer_html__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_template_customizer_template_customizer_html__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -526,7 +523,7 @@ function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" 
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
-var CSS_FILENAME_PATTERN = '%name%.scss';
+var CSS_FILENAME_PATTERN = '%name%.css';
 var CONTROLS = ['rtl', 'style', 'headerType', 'contentLayout', 'layoutCollapsed', 'showDropdownOnHover', 'layoutNavbarOptions', 'layoutFooterFixed', 'themes'];
 var STYLES = ['light', 'dark', 'system'];
 var NAVBAR_OPTIONS = ['sticky', 'static', 'hidden'];
@@ -653,28 +650,6 @@ var TemplateCustomizer = /*#__PURE__*/function () {
     key: "setStyle",
     value: function setStyle(style) {
       this._setSetting('Style', style);
-
-      // If cookie mode is set
-      if (style !== '' && this._checkCookie('mode')) {
-        // If cookie mode is system
-        if (style === 'system') {
-          this._setCookie('mode', 'system', 365);
-          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            this._setCookie('colorPref', 'dark', 365);
-          } else {
-            this._setCookie('colorPref', 'light', 365);
-          }
-        } else {
-          // If cookie mode is dark
-          if (style === 'dark') {
-            this._setCookie('mode', 'dark', 365);
-          } else {
-            this._setCookie('mode', 'light', 365);
-          }
-        }
-      } else {
-        this._setCookie('mode', style || 'light', 365);
-      }
       window.location.reload();
     }
   }, {
@@ -687,7 +662,6 @@ var TemplateCustomizer = /*#__PURE__*/function () {
       if (!theme) return;
       this.settings.theme = theme;
       if (updateStorage) this._setSetting('Theme', themeName);
-      this._setCookie('theme', themeName, 365);
       var themeUrl = this.pathResolver(this.settings.themesPath + this.settings.cssFilenamePattern.replace('%name%', themeName + (this.settings.style !== 'light' ? "-".concat(this.settings.style) : '')));
       this._loadStylesheets(_defineProperty({}, themeUrl, document.querySelector('.template-customizer-theme-css')), cb || function () {});
       if (updateStorage) this.settings.onSettingsChange.call(this, this.settings);
@@ -907,24 +881,21 @@ var TemplateCustomizer = /*#__PURE__*/function () {
       // ! Set settings by following priority: Local Storage, Theme Config, HTML Classes
       this.settings.rtl = rtl !== '' ? rtl === 'true' : this.settings.defaultTextDir;
       this.settings.stylesOpt = this.settings.styles.indexOf(style) !== -1 ? style : this.settings.defaultStyle;
-      if (this._getCookie('mode') === 'system') {
+      if (this.settings.stylesOpt === 'system') {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          this._setCookie('colorPref', 'dark', 365);
           this.settings.style = 'dark';
+          document.cookie = "style=dark"; // to fix laravel system mode issue
         } else {
-          this._setCookie('colorPref', 'light', 365);
           this.settings.style = 'light';
+          document.cookie = "style=light"; // to fix laravel system mode issue
         }
       } else {
-        if (this.settings.stylesOpt === 'system') {
-          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            this.settings.style = 'dark';
-          } else {
-            this.settings.style = 'light';
-          }
-        } else {
-          this.settings.style = this.settings.styles.indexOf(style) !== -1 ? style : this.settings.stylesOpt;
-        }
+        document.cookie = "style=; expires=Thu, 01 Jan 2000 00:00:00 UTC; path=/;"; // to fix laravel system mode issue
+        this.settings.style = this.settings.styles.indexOf(style) !== -1 ? style : this.settings.defaultStyle;
+      }
+      if (this.settings.styles.indexOf(this.settings.style) === -1) {
+        // eslint-disable-next-line prefer-destructuring
+        this.settings.style = this.settings.styles[0];
       }
       this.settings.contentLayout = contentLayout !== '' ? contentLayout : this.settings.defaultContentLayout;
       this.settings.layoutCollapsed = collapsedMenu !== '' ? collapsedMenu === 'true' : this.settings.defaultMenuCollapsed;
@@ -937,11 +908,7 @@ var TemplateCustomizer = /*#__PURE__*/function () {
       }
       this.settings.layoutNavbarOptions = navType;
       this.settings.layoutFooterFixed = fixedFooter !== '' ? fixedFooter === 'true' : this.settings.defaultFooterFixed;
-      if (this._checkCookie('theme')) {
-        this.settings.theme = this._getThemeByName(this._getCookie('theme'), true);
-      } else {
-        this.settings.theme = this._getThemeByName(this._getSetting('Theme'), true);
-      }
+      this.settings.theme = this._getThemeByName(this._getSetting('Theme'), true);
 
       // Filter options depending on available controls
       if (!this._hasControls('rtl')) this.settings.rtl = document.documentElement.getAttribute('dir') === 'rtl';
@@ -965,7 +932,7 @@ var TemplateCustomizer = /*#__PURE__*/function () {
         return _this2._getElementFromString("<div class=\"col-4 px-2\">\n      <div class=\"form-check custom-option custom-option-icon mb-0\">\n        <label class=\"form-check-label custom-option-content p-0\" for=\"".concat(inputName).concat(nameVal, "\">\n          <span class=\"custom-option-body mb-0\">\n            <img src=\"").concat(assetsPath, "img/customizer/").concat(image).concat(isDarkStyle ? '-dark' : '', ".svg\" alt=\"").concat(title, "\" class=\"img-fluid scaleX-n1-rtl\" />\n          </span>\n          <input\n            name=\"").concat(inputName, "\"\n            class=\"form-check-input d-none\"\n            type=\"radio\"\n            value=\"").concat(nameVal, "\"\n            id=\"").concat(inputName).concat(nameVal, "\" />\n        </label>\n      </div>\n      <label class=\"form-check-label small text-nowrap\" for=\"").concat(inputName).concat(nameVal, "\">").concat(title, "</label>\n    </div>"));
       };
       this._cleanup();
-      this.container = this._getElementFromString((_template_customizer_template_customizer_html_raw__WEBPACK_IMPORTED_MODULE_1___default()));
+      this.container = this._getElementFromString((_template_customizer_template_customizer_html__WEBPACK_IMPORTED_MODULE_1___default()));
 
       // Customizer visibility condition
       //
@@ -993,9 +960,6 @@ var TemplateCustomizer = /*#__PURE__*/function () {
       var resetBtnCb = function resetBtnCb() {
         _this2.clearLocalStorage();
         window.location.reload();
-        _this2._deleteCookie('mode');
-        _this2._deleteCookie('colorPref');
-        _this2._deleteCookie('theme');
       };
       resetBtn.addEventListener('click', resetBtnCb);
       this._listeners.push([resetBtn, 'click', resetBtnCb]);
@@ -1306,18 +1270,8 @@ var TemplateCustomizer = /*#__PURE__*/function () {
       } else {
         // If theme control is not enabled, get the current theme from localstorage else display default theme
         var theme = this._getSetting('Theme');
-        this._insertStylesheet('template-customizer-theme-css', this.pathResolver(this.settings.themesPath + this.settings.cssFilenamePattern.replace('%name%', theme ? theme : this.settings.defaultTheme.name + (this.settings.style !== 'light' ? "-".concat(this.settings.style) : ''))));
+        this._insertStylesheet('template-customizer-theme-css', this.pathResolver(this.settings.themesPath + this.settings.cssFilenamePattern.replace('%name%', theme ? theme : 'theme-default' + (this.settings.style !== 'light' ? "-".concat(this.settings.style) : ''))));
       }
-    }
-  }, {
-    key: "_loadStylesheet",
-    value: function _loadStylesheet(href, className) {
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = href;
-      link.className = className;
-      document.head.appendChild(link);
     }
   }, {
     key: "_insertStylesheet",
@@ -1333,11 +1287,9 @@ var TemplateCustomizer = /*#__PURE__*/function () {
         link.setAttribute('href', href);
         curLink.parentNode.insertBefore(link, curLink.nextSibling);
       } else {
-        this._loadStylesheet(href, className);
+        document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"".concat(href, "\" class=\"").concat(className, "\">"));
       }
-      if (curLink) {
-        curLink.parentNode.removeChild(curLink);
-      }
+      curLink.parentNode.removeChild(curLink);
     }
   }, {
     key: "_loadStylesheets",
@@ -1345,8 +1297,7 @@ var TemplateCustomizer = /*#__PURE__*/function () {
       var paths = Object.keys(stylesheets);
       var count = paths.length;
       var loaded = 0;
-      function loadStylesheet(path, curLink) {
-        var _cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
+      function loadStylesheet(path, curLink, _cb) {
         var link = document.createElement('link');
         link.setAttribute('href', path);
         link.setAttribute('rel', 'stylesheet');
@@ -1373,7 +1324,7 @@ var TemplateCustomizer = /*#__PURE__*/function () {
             // Catch error
           }
         }, 10);
-        curLink.setAttribute('href', link.href);
+        curLink.parentNode.insertBefore(link, curLink.nextSibling);
       }
       function stylesheetCallBack() {
         if ((loaded += 1) >= count) {
@@ -1509,47 +1460,6 @@ var TemplateCustomizer = /*#__PURE__*/function () {
       }
       return returnDefault ? this.settings.defaultTheme : null;
     }
-  }, {
-    key: "_setCookie",
-    value: function _setCookie(name, value, daysToExpire) {
-      var path = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '/';
-      var domain = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
-      var cookie = "".concat(encodeURIComponent(name), "=").concat(encodeURIComponent(value));
-      var expires = '';
-      if (daysToExpire) {
-        var expirationDate = new Date();
-        expirationDate.setTime(expirationDate.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
-        expires = "; expires=".concat(expirationDate.toUTCString());
-      }
-      var pathString = "; path=".concat(path);
-      var domainString = domain ? "; domain=".concat(domain) : '';
-      document.cookie = "".concat(cookie).concat(expires).concat(pathString).concat(domainString);
-    }
-  }, {
-    key: "_getCookie",
-    value: function _getCookie(name) {
-      var cookies = document.cookie.split('; ');
-      for (var i = 0; i < cookies.length; i++) {
-        var _cookies$i$split = cookies[i].split('='),
-          _cookies$i$split2 = _slicedToArray(_cookies$i$split, 2),
-          cookieName = _cookies$i$split2[0],
-          cookieValue = _cookies$i$split2[1];
-        if (decodeURIComponent(cookieName) === name) {
-          return decodeURIComponent(cookieValue);
-        }
-      }
-      return null;
-    }
-  }, {
-    key: "_checkCookie",
-    value: function _checkCookie(name) {
-      return this._getCookie(name) !== null;
-    }
-  }, {
-    key: "_deleteCookie",
-    value: function _deleteCookie(name) {
-      document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    }
   }]);
   return TemplateCustomizer;
 }(); // Styles
@@ -1679,7 +1589,7 @@ TemplateCustomizer.LANGUAGES = {
     direction_label: 'Richtung'
   }
 };
-window.TemplateCustomizer = TemplateCustomizer;
+
 }();
 /******/ 	return __webpack_exports__;
 /******/ })()

@@ -10569,9 +10569,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.esm.js");
 
-try {
-  window.Swiper = swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"];
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

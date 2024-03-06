@@ -10577,9 +10577,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 };
-try {
-  window.Dropzone = (dropzone_dist_dropzone__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

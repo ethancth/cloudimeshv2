@@ -1089,7 +1089,6 @@ if (typeof window !== 'undefined') {
 }
 
 // ---
-window.Helpers = Helpers;
 
 /******/ 	return __webpack_exports__;
 /******/ })()

@@ -129,9 +129,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _yaireo_tagify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @yaireo/tagify */ "./node_modules/@yaireo/tagify/dist/tagify.min.js");
 /* harmony import */ var _yaireo_tagify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_yaireo_tagify__WEBPACK_IMPORTED_MODULE_0__);
 
-try {
-  window.Tagify = (_yaireo_tagify__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

@@ -4055,7 +4055,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2_dist_sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
 /* harmony import */ var sweetalert2_dist_sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 
-var Swal = sweetalert2_dist_sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().mixin({
+var Swal = sweetalert2_dist_sweetalert2__WEBPACK_IMPORTED_MODULE_0__.mixin({
   buttonsStyling: false,
   customClass: {
     confirmButton: 'btn btn-primary',
@@ -4063,9 +4063,6 @@ var Swal = sweetalert2_dist_sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().m
     denyButton: 'btn btn-label-secondary'
   }
 });
-try {
-  window.Swal = Swal;
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

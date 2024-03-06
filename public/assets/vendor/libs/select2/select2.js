@@ -6913,10 +6913,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! select2/dist/js/select2.full */ "./node_modules/select2/dist/js/select2.full.js");
 /* harmony import */ var select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0__);
 
-try {
-  window.select2 = (select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
-select2_dist_js_select2_full__WEBPACK_IMPORTED_MODULE_0___default()();
 
 }();
 /******/ 	return __webpack_exports__;

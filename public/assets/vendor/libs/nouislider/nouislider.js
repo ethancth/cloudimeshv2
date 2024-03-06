@@ -2364,13 +2364,10 @@ var __webpack_exports__ = {};
   \***************************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   noUiSlider: function() { return /* reexport safe */ nouislider__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */   noUiSlider: function() { return /* reexport module object */ nouislider__WEBPACK_IMPORTED_MODULE_0__; }
 /* harmony export */ });
 /* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nouislider */ "./node_modules/nouislider/dist/nouislider.mjs");
 
-try {
-  window.noUiSlider = nouislider__WEBPACK_IMPORTED_MODULE_0__["default"];
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

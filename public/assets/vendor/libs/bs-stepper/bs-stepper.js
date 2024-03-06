@@ -558,9 +558,6 @@ bsStepper.forEach(function (el) {
     }
   });
 });
-try {
-  window.Stepper = (bs_stepper_dist_js_bs_stepper__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

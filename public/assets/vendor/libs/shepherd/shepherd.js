@@ -5042,9 +5042,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var shepherd_js_dist_js_shepherd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! shepherd.js/dist/js/shepherd */ "./node_modules/shepherd.js/dist/js/shepherd.js");
 /* harmony import */ var shepherd_js_dist_js_shepherd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(shepherd_js_dist_js_shepherd__WEBPACK_IMPORTED_MODULE_0__);
 
-try {
-  window.Shepherd = (shepherd_js_dist_js_shepherd__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

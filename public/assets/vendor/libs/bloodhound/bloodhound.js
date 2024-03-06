@@ -1028,9 +1028,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var typeahead_js_dist_bloodhound__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! typeahead.js/dist/bloodhound */ "./node_modules/typeahead.js/dist/bloodhound.js");
 /* harmony import */ var typeahead_js_dist_bloodhound__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(typeahead_js_dist_bloodhound__WEBPACK_IMPORTED_MODULE_0__);
 
-try {
-  window.Bloodhound = (typeahead_js_dist_bloodhound__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

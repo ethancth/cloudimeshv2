@@ -10810,9 +10810,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery_dist_jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_dist_jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 var $ = (jquery_dist_jquery__WEBPACK_IMPORTED_MODULE_0___default());
-try {
-  window.jQuery = window.$ = (jquery_dist_jquery__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

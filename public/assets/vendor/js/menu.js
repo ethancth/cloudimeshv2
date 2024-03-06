@@ -962,7 +962,6 @@ var Menu = /*#__PURE__*/function () {
   }]);
   return Menu;
 }();
-window.Menu = Menu;
 
 /******/ 	return __webpack_exports__;
 /******/ })()

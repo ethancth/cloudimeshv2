@@ -703,10 +703,13 @@ var __webpack_exports__ = {};
   !*** ./resources/assets/vendor/libs/node-waves/node-waves.js ***!
   \***************************************************************/
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   nodeWaves: function() { return /* reexport default from dynamic */ node_waves_src_js_waves__WEBPACK_IMPORTED_MODULE_0___default.a; }
+/* harmony export */ });
 /* harmony import */ var node_waves_src_js_waves__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! node-waves/src/js/waves */ "./node_modules/node-waves/src/js/waves.js");
 /* harmony import */ var node_waves_src_js_waves__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(node_waves_src_js_waves__WEBPACK_IMPORTED_MODULE_0__);
 
-window.Waves = (node_waves_src_js_waves__WEBPACK_IMPORTED_MODULE_0___default());
+
 }();
 /******/ 	return __webpack_exports__;
 /******/ })()

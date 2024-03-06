@@ -505,7 +505,6 @@ div.dataTables_wrapper .dt-button-collection > div[role=menu] {
   margin-top: 0.2rem;
 }
 
-div.dropdown-menu.dt-button-collection,
 div.dt-button-collection .dt-button:not(.dt-btn-split-drop) {
   min-width: 8rem;
 }
@@ -514,8 +513,7 @@ div.dt-button-collection .dt-button:not(.dt-btn-split-drop) {
   display: none;
 }
 
-div.dt-button-collection .dt-button,
-div.dt-buttons div.dropdown-menu .dt-button {
+div.dt-button-collection .dt-button {
   border-radius: var(--bs-border-radius);
 }
 
@@ -534,6 +532,9 @@ div.dt-buttons div.dropdown-menu .dt-button {
 
 .dark-style div.dataTables_wrapper .dt-button-collection {
   background-color: #2f3349;
+}
+.dark-style div.dataTables_wrapper .dt-button-collection > div[role=menu] {
+  box-shadow: 0 0.25rem 1rem rgba(15, 20, 34, 0.55);
 }
 .dark-style .dataTable a:not([href]):not([tabindex]) {
   color: #28c76f;

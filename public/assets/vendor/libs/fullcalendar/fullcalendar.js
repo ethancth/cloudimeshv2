@@ -14803,35 +14803,22 @@ var __webpack_exports__ = {};
   \*******************************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Calendar: function() { return /* reexport safe */ _fullcalendar_core__WEBPACK_IMPORTED_MODULE_4__.Calendar; },
-/* harmony export */   dayGridPlugin: function() { return /* reexport safe */ _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_0__["default"]; },
-/* harmony export */   interactionPlugin: function() { return /* reexport safe */ _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_1__["default"]; },
-/* harmony export */   listPlugin: function() { return /* reexport safe */ _fullcalendar_list__WEBPACK_IMPORTED_MODULE_2__["default"]; },
-/* harmony export */   timegridPlugin: function() { return /* reexport safe */ _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_3__["default"]; }
+/* harmony export */   Calendar: function() { return /* reexport safe */ _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__.Calendar; },
+/* harmony export */   dayGridPlugin: function() { return /* reexport safe */ _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"]; },
+/* harmony export */   interactionPlugin: function() { return /* reexport safe */ _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_2__["default"]; },
+/* harmony export */   listPlugin: function() { return /* reexport safe */ _fullcalendar_list__WEBPACK_IMPORTED_MODULE_3__["default"]; },
+/* harmony export */   timegridPlugin: function() { return /* reexport safe */ _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_4__["default"]; }
 /* harmony export */ });
-/* harmony import */ var _fullcalendar_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fullcalendar/core */ "./node_modules/@fullcalendar/core/index.js");
-/* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fullcalendar/daygrid */ "./node_modules/@fullcalendar/daygrid/index.js");
-/* harmony import */ var _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fullcalendar/interaction */ "./node_modules/@fullcalendar/interaction/index.js");
-/* harmony import */ var _fullcalendar_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/list */ "./node_modules/@fullcalendar/list/index.js");
-/* harmony import */ var _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fullcalendar/timegrid */ "./node_modules/@fullcalendar/timegrid/index.js");
+/* harmony import */ var _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fullcalendar/core */ "./node_modules/@fullcalendar/core/index.js");
+/* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fullcalendar/daygrid */ "./node_modules/@fullcalendar/daygrid/index.js");
+/* harmony import */ var _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/interaction */ "./node_modules/@fullcalendar/interaction/index.js");
+/* harmony import */ var _fullcalendar_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fullcalendar/list */ "./node_modules/@fullcalendar/list/index.js");
+/* harmony import */ var _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fullcalendar/timegrid */ "./node_modules/@fullcalendar/timegrid/index.js");
 
 
 
 
 
-var calendarPlugins = {
-  dayGrid: _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_0__["default"],
-  interaction: _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_1__["default"],
-  list: _fullcalendar_list__WEBPACK_IMPORTED_MODULE_2__["default"],
-  timeGrid: _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_3__["default"]
-};
-try {
-  window.Calendar = _fullcalendar_core__WEBPACK_IMPORTED_MODULE_4__.Calendar;
-  window.dayGridPlugin = _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_0__["default"];
-  window.interactionPlugin = _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_1__["default"];
-  window.listPlugin = _fullcalendar_list__WEBPACK_IMPORTED_MODULE_2__["default"];
-  window.timegridPlugin = _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_3__["default"];
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

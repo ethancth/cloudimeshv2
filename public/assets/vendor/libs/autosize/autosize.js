@@ -9,17 +9,244 @@
 	}
 })(self, function() {
 return /******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/autosize/dist/autosize.esm.js":
-/*!****************************************************!*\
-  !*** ./node_modules/autosize/dist/autosize.esm.js ***!
-  \****************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/autosize/dist/autosize.js":
+/*!************************************************!*\
+  !*** ./node_modules/autosize/dist/autosize.js ***!
+  \************************************************/
+/***/ (function(module) {
 
-__webpack_require__.r(__webpack_exports__);
-var e=new Map;function t(t){var o=e.get(t);o&&o.destroy()}function o(t){var o=e.get(t);o&&o.update()}var r=null;"undefined"==typeof window?((r=function(e){return e}).destroy=function(e){return e},r.update=function(e){return e}):((r=function(t,o){return t&&Array.prototype.forEach.call(t.length?t:[t],function(t){return function(t){if(t&&t.nodeName&&"TEXTAREA"===t.nodeName&&!e.has(t)){var o,r=null,n=window.getComputedStyle(t),i=(o=t.value,function(){a({testForHeightReduction:""===o||!t.value.startsWith(o),restoreTextAlign:null}),o=t.value}),l=function(o){t.removeEventListener("autosize:destroy",l),t.removeEventListener("autosize:update",s),t.removeEventListener("input",i),window.removeEventListener("resize",s),Object.keys(o).forEach(function(e){return t.style[e]=o[e]}),e.delete(t)}.bind(t,{height:t.style.height,resize:t.style.resize,textAlign:t.style.textAlign,overflowY:t.style.overflowY,overflowX:t.style.overflowX,wordWrap:t.style.wordWrap});t.addEventListener("autosize:destroy",l),t.addEventListener("autosize:update",s),t.addEventListener("input",i),window.addEventListener("resize",s),t.style.overflowX="hidden",t.style.wordWrap="break-word",e.set(t,{destroy:l,update:s}),s()}function a(e){var o,i,l=e.restoreTextAlign,s=void 0===l?null:l,d=e.testForHeightReduction,u=void 0===d||d,c=n.overflowY;if(0!==t.scrollHeight&&("vertical"===n.resize?t.style.resize="none":"both"===n.resize&&(t.style.resize="horizontal"),u&&(o=function(e){for(var t=[];e&&e.parentNode&&e.parentNode instanceof Element;)e.parentNode.scrollTop&&t.push([e.parentNode,e.parentNode.scrollTop]),e=e.parentNode;return function(){return t.forEach(function(e){var t=e[0],o=e[1];t.style.scrollBehavior="auto",t.scrollTop=o,t.style.scrollBehavior=null})}}(t),t.style.height=""),i="content-box"===n.boxSizing?t.scrollHeight-(parseFloat(n.paddingTop)+parseFloat(n.paddingBottom)):t.scrollHeight+parseFloat(n.borderTopWidth)+parseFloat(n.borderBottomWidth),"none"!==n.maxHeight&&i>parseFloat(n.maxHeight)?("hidden"===n.overflowY&&(t.style.overflow="scroll"),i=parseFloat(n.maxHeight)):"hidden"!==n.overflowY&&(t.style.overflow="hidden"),t.style.height=i+"px",s&&(t.style.textAlign=s),o&&o(),r!==i&&(t.dispatchEvent(new Event("autosize:resized",{bubbles:!0})),r=i),c!==n.overflow&&!s)){var v=n.textAlign;"hidden"===n.overflow&&(t.style.textAlign="start"===v?"end":"start"),a({restoreTextAlign:v,testForHeightReduction:!0})}}function s(){a({testForHeightReduction:!0,restoreTextAlign:null})}}(t)}),t}).destroy=function(e){return e&&Array.prototype.forEach.call(e.length?e:[e],t),e},r.update=function(e){return e&&Array.prototype.forEach.call(e.length?e:[e],o),e});var n=r;/* harmony default export */ __webpack_exports__["default"] = (n);
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	0;
+}(this, (function () {
+	var assignedElements = new Map();
+
+	function assign(ta) {
+	  if (!ta || !ta.nodeName || ta.nodeName !== 'TEXTAREA' || assignedElements.has(ta)) return;
+	  var previousHeight = null;
+
+	  function cacheScrollTops(el) {
+	    var arr = [];
+
+	    while (el && el.parentNode && el.parentNode instanceof Element) {
+	      if (el.parentNode.scrollTop) {
+	        arr.push([el.parentNode, el.parentNode.scrollTop]);
+	      }
+
+	      el = el.parentNode;
+	    }
+
+	    return function () {
+	      return arr.forEach(function (_ref) {
+	        var node = _ref[0],
+	            scrollTop = _ref[1];
+	        node.style.scrollBehavior = 'auto';
+	        node.scrollTop = scrollTop;
+	        node.style.scrollBehavior = null;
+	      });
+	    };
+	  }
+
+	  var computed = window.getComputedStyle(ta);
+
+	  function setHeight(_ref2) {
+	    var _ref2$restoreTextAlig = _ref2.restoreTextAlign,
+	        restoreTextAlign = _ref2$restoreTextAlig === void 0 ? null : _ref2$restoreTextAlig,
+	        _ref2$testForHeightRe = _ref2.testForHeightReduction,
+	        testForHeightReduction = _ref2$testForHeightRe === void 0 ? true : _ref2$testForHeightRe;
+	    var initialOverflowY = computed.overflowY;
+
+	    if (ta.scrollHeight === 0) {
+	      // If the scrollHeight is 0, then the element probably has display:none or is detached from the DOM.
+	      return;
+	    } // disallow vertical resizing
+
+
+	    if (computed.resize === 'vertical') {
+	      ta.style.resize = 'none';
+	    } else if (computed.resize === 'both') {
+	      ta.style.resize = 'horizontal';
+	    }
+
+	    var restoreScrollTops; // remove inline height style to accurately measure situations where the textarea should shrink
+	    // however, skip this step if the new value appends to the previous value, as textarea height should only have grown
+
+	    if (testForHeightReduction) {
+	      // ensure the scrollTop values of parent elements are not modified as a consequence of shrinking the textarea height
+	      restoreScrollTops = cacheScrollTops(ta);
+	      ta.style.height = '';
+	    }
+
+	    var newHeight;
+
+	    if (computed.boxSizing === 'content-box') {
+	      newHeight = ta.scrollHeight - (parseFloat(computed.paddingTop) + parseFloat(computed.paddingBottom));
+	    } else {
+	      newHeight = ta.scrollHeight + parseFloat(computed.borderTopWidth) + parseFloat(computed.borderBottomWidth);
+	    }
+
+	    if (computed.maxHeight !== 'none' && newHeight > parseFloat(computed.maxHeight)) {
+	      if (computed.overflowY === 'hidden') {
+	        ta.style.overflow = 'scroll';
+	      }
+
+	      newHeight = parseFloat(computed.maxHeight);
+	    } else if (computed.overflowY !== 'hidden') {
+	      ta.style.overflow = 'hidden';
+	    }
+
+	    ta.style.height = newHeight + 'px';
+
+	    if (restoreTextAlign) {
+	      ta.style.textAlign = restoreTextAlign;
+	    }
+
+	    if (restoreScrollTops) {
+	      restoreScrollTops();
+	    }
+
+	    if (previousHeight !== newHeight) {
+	      ta.dispatchEvent(new Event('autosize:resized', {
+	        bubbles: true
+	      }));
+	      previousHeight = newHeight;
+	    }
+
+	    if (initialOverflowY !== computed.overflow && !restoreTextAlign) {
+	      var textAlign = computed.textAlign;
+
+	      if (computed.overflow === 'hidden') {
+	        // Webkit fails to reflow text after overflow is hidden,
+	        // even if hiding overflow would allow text to fit more compactly.
+	        // The following is intended to force the necessary text reflow.
+	        ta.style.textAlign = textAlign === 'start' ? 'end' : 'start';
+	      }
+
+	      setHeight({
+	        restoreTextAlign: textAlign,
+	        testForHeightReduction: true
+	      });
+	    }
+	  }
+
+	  function fullSetHeight() {
+	    setHeight({
+	      testForHeightReduction: true,
+	      restoreTextAlign: null
+	    });
+	  }
+
+	  var handleInput = function () {
+	    var previousValue = ta.value;
+	    return function () {
+	      setHeight({
+	        // if previousValue is '', check for height shrinkage because the placeholder may be taking up space instead
+	        // if new value is merely appending to previous value, skip checking for height deduction
+	        testForHeightReduction: previousValue === '' || !ta.value.startsWith(previousValue),
+	        restoreTextAlign: null
+	      });
+	      previousValue = ta.value;
+	    };
+	  }();
+
+	  var destroy = function (style) {
+	    ta.removeEventListener('autosize:destroy', destroy);
+	    ta.removeEventListener('autosize:update', fullSetHeight);
+	    ta.removeEventListener('input', handleInput);
+	    window.removeEventListener('resize', fullSetHeight); // future todo: consider replacing with ResizeObserver
+
+	    Object.keys(style).forEach(function (key) {
+	      return ta.style[key] = style[key];
+	    });
+	    assignedElements["delete"](ta);
+	  }.bind(ta, {
+	    height: ta.style.height,
+	    resize: ta.style.resize,
+	    textAlign: ta.style.textAlign,
+	    overflowY: ta.style.overflowY,
+	    overflowX: ta.style.overflowX,
+	    wordWrap: ta.style.wordWrap
+	  });
+
+	  ta.addEventListener('autosize:destroy', destroy);
+	  ta.addEventListener('autosize:update', fullSetHeight);
+	  ta.addEventListener('input', handleInput);
+	  window.addEventListener('resize', fullSetHeight); // future todo: consider replacing with ResizeObserver
+
+	  ta.style.overflowX = 'hidden';
+	  ta.style.wordWrap = 'break-word';
+	  assignedElements.set(ta, {
+	    destroy: destroy,
+	    update: fullSetHeight
+	  });
+	  fullSetHeight();
+	}
+
+	function destroy(ta) {
+	  var methods = assignedElements.get(ta);
+
+	  if (methods) {
+	    methods.destroy();
+	  }
+	}
+
+	function update(ta) {
+	  var methods = assignedElements.get(ta);
+
+	  if (methods) {
+	    methods.update();
+	  }
+	}
+
+	var autosize = null; // Do nothing in Node.js environment
+
+	if (typeof window === 'undefined') {
+	  autosize = function autosize(el) {
+	    return el;
+	  };
+
+	  autosize.destroy = function (el) {
+	    return el;
+	  };
+
+	  autosize.update = function (el) {
+	    return el;
+	  };
+	} else {
+	  autosize = function autosize(el, options) {
+	    if (el) {
+	      Array.prototype.forEach.call(el.length ? el : [el], function (x) {
+	        return assign(x);
+	      });
+	    }
+
+	    return el;
+	  };
+
+	  autosize.destroy = function (el) {
+	    if (el) {
+	      Array.prototype.forEach.call(el.length ? el : [el], destroy);
+	    }
+
+	    return el;
+	  };
+
+	  autosize.update = function (el) {
+	    if (el) {
+	      Array.prototype.forEach.call(el.length ? el : [el], update);
+	    }
+
+	    return el;
+	  };
+	}
+
+	var autosize$1 = autosize;
+
+	return autosize$1;
+
+})));
 
 
 /***/ })
@@ -44,13 +271,25 @@ var e=new Map;function t(t){var o=e.get(t);o&&o.destroy()}function o(t){var o=e.
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -81,20 +320,19 @@ var e=new Map;function t(t){var o=e.get(t);o&&o.destroy()}function o(t){var o=e.
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 !function() {
+"use strict";
 /*!***********************************************************!*\
   !*** ./resources/assets/vendor/libs/autosize/autosize.js ***!
   \***********************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   autosize: function() { return /* reexport safe */ autosize__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */   autosize: function() { return /* reexport module object */ autosize_dist_autosize__WEBPACK_IMPORTED_MODULE_0__; }
 /* harmony export */ });
-/* harmony import */ var autosize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! autosize */ "./node_modules/autosize/dist/autosize.esm.js");
+/* harmony import */ var autosize_dist_autosize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! autosize/dist/autosize */ "./node_modules/autosize/dist/autosize.js");
+/* harmony import */ var autosize_dist_autosize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(autosize_dist_autosize__WEBPACK_IMPORTED_MODULE_0__);
 
-try {
-  window.autosize = autosize__WEBPACK_IMPORTED_MODULE_0__["default"];
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

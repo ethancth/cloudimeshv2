@@ -254,7 +254,6 @@ var MegaDropdown = /*#__PURE__*/function () {
   }]);
   return MegaDropdown;
 }();
-window.MegaDropdown = MegaDropdown;
 
 /******/ 	return __webpack_exports__;
 /******/ })()

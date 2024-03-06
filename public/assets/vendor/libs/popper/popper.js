@@ -113,9 +113,6 @@ __webpack_require__.r(__webpack_exports__);
 // Required to enable animations on dropdowns/tooltips/popovers
 // Popper.Defaults.modifiers.computeStyle.gpuAcceleration = false
 
-try {
-  window.Popper = (_popperjs_core_dist_umd_popper_min__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;

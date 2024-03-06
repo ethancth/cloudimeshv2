@@ -2552,15 +2552,13 @@ var __webpack_exports__ = {};
   !*** ./resources/assets/vendor/libs/typeahead-js/typeahead.js ***!
   \****************************************************************/
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   typeahead: function() { return /* reexport default from dynamic */ typeahead_js_dist_typeahead_bundle__WEBPACK_IMPORTED_MODULE_0___default.a; }
+/* harmony export */ });
 /* harmony import */ var typeahead_js_dist_typeahead_bundle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! typeahead.js/dist/typeahead.bundle */ "./node_modules/typeahead.js/dist/typeahead.bundle.js");
 /* harmony import */ var typeahead_js_dist_typeahead_bundle__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(typeahead_js_dist_typeahead_bundle__WEBPACK_IMPORTED_MODULE_0__);
 
 
-// try {
-//   window.typeahead = typeahead;
-// } catch (e) {}
-
-// export { typeahead };
 }();
 /******/ 	return __webpack_exports__;
 /******/ })()

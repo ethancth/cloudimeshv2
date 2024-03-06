@@ -1966,17 +1966,14 @@ var __webpack_exports__ = {};
   \*********************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   numeral: function() { return /* reexport default from dynamic */ numeral__WEBPACK_IMPORTED_MODULE_0___default.a; }
+/* harmony export */   numeral: function() { return /* reexport module object */ numeral_numeral__WEBPACK_IMPORTED_MODULE_0__; }
 /* harmony export */ });
-/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! numeral */ "./node_modules/numeral/numeral.js");
-/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var numeral_numeral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! numeral/numeral */ "./node_modules/numeral/numeral.js");
+/* harmony import */ var numeral_numeral__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(numeral_numeral__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var numeral_locales__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! numeral/locales */ "./node_modules/numeral/locales.js");
 /* harmony import */ var numeral_locales__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(numeral_locales__WEBPACK_IMPORTED_MODULE_1__);
 
 
-try {
-  window.numeral = (numeral__WEBPACK_IMPORTED_MODULE_0___default());
-} catch (e) {}
 
 }();
 /******/ 	return __webpack_exports__;
