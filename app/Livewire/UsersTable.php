@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Project;
 use App\Models\User;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -50,10 +51,10 @@ class UsersTable extends Component
   {
     return view('livewire.users-table',
       [
-        'users' => User::search($this->search)
-          ->when($this->admin !== '',function($query){
-            $query->where('is_admin',$this->admin);
-          })
+        'users' => Project::search($this->search)
+//          ->when($this->admin !== '',function($query){
+//            $query->where('is_admin',$this->admin);
+//          })
           ->orderBy($this->sortBy,$this->sortDir)
           ->paginate($this->perPage)
       ]

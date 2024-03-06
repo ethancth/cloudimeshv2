@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class Project extends Model
@@ -29,6 +30,30 @@ class Project extends Model
   public function owner2()
   {
     return $this->hasMany(User::class,'id','user_id');
+  }
+
+  public function scopeSearch($query, $value){
+    $query->where('title','like',"%{$value}%")->orWhere('price','like',"%{$value}%")->orWhere('status','like',"%{$value}%")->where('user_id','=',Auth::id());
+  }
+
+  public function getProjectStatusAttribute()
+  {
+    if($this->status==1){
+      return 'Draft';
+    }
+    if($this->status==2){
+      return 'Review';
+    }
+    if($this->status==3){
+      return 'Approve';
+    }
+    if($this->status==4){
+      return 'In-Provisioning';
+    }
+    if($this->status==5){
+      return 'Complete';
+    }
+
   }
 
   public function scopeWithStatus($query, $status)
@@ -86,6 +111,7 @@ class Project extends Model
   {
     return $query;
   }
+
 
 
 }

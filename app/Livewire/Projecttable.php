@@ -3,273 +3,99 @@
 namespace App\Livewire;
 
 use App\Models\Project;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
-use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
-use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
-use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Url;
+use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 
-class Projecttable extends DataTableComponent
+class Projecttable extends Component
 {
 
-  public $myParam = 'Default';
-  public string $tableName = 'users1';
-  public array $users1 = [];
 
-  public $columnSearch = [
-    'name' => null,
-    'email' => null,
-  ];
+  use WithPagination, WithoutUrlPagination, LivewireAlert;
+  protected $paginationTheme = 'bootstrap';
+  public  $title, $status, $description;
+
+  #[Url(history:true)]
+  public $search = '';
+
+  #[Url(history:true)]
+  public $admin = '';
+
+  #[Url(history:true)]
+  public $sortBy = 'created_at';
+
+  #[Url(history:true)]
+  public $sortDir = 'DESC';
+
+  #[Url()]
+  public $perPage = 5;
 
 
-  protected $model = User::class;
-
-  public function configure(): void
-  {
-    $this->setPrimaryKey('id')
-      ->setDebugEnabled()
-      ->setAdditionalSelects(['users.id as id'])
-//      ->setConfigurableAreas([
-//        'toolbar-left-start' => ['includes.areas.toolbar-left-start', ['param1' => $this->myParam]]
-//      ])
-      ->setReorderEnabled()
-      ->setHideReorderColumnUnlessReorderingEnabled()
-      ->setSecondaryHeaderTrAttributes(function($rows) {
-        return ['class' => 'bg-gray-100'];
-      })
-      ->setSecondaryHeaderTdAttributes(function(Column $column, $rows) {
-        if ($column->isField('id')) {
-          return ['class' => 'text-red-500'];
-        }
-
-        return ['default' => true];
-      })
-      ->setFooterTrAttributes(function($rows) {
-        return ['class' => 'bg-gray-100'];
-      })
-      ->setFooterTdAttributes(function(Column $column, $rows) {
-        if ($column->isField('name')) {
-          return ['class' => 'text-green-500'];
-        }
-
-        return ['default' => true];
-      })
-      ->setHideBulkActionsWhenEmptyEnabled()
-      ->setTableRowUrl(function($row) {
-        return 'https://google-'.$row->id.'.com';
-      })
-      ->setTableRowUrlTarget(function($row) {
-        return '_blank';
-      });
+  public function updatedSearch(){
+    $this->resetPage();
   }
 
-  public function columns(): array
-  {
-    return [
-      // ImageColumn::make('Avatar')
-      //     ->location(function($row) {
-      //         return asset('img/logo-'.$row->id.'.png');
-      //     })
-      //     ->attributes(function($row) {
-      //         return [
-      //             'class' => 'w-8 h-8 rounded-full',
-      //         ];
-      //     }),
-//      Column::make('Order', 'sort')
-//        ->sortable()
-//        ->collapseOnMobile()
-//        ->excludeFromColumnSelect(),
-      Column::make('Name')
-        ->sortable()
-        ->searchable()
-        ->secondaryHeader(function() {
-          return view('tables.cells.input-search', ['field' => 'name', 'columnSearch' => $this->columnSearch]);
-        })
-        ->footer(function($rows) {
-          return '<strong>Name Footer</strong>';
-        })
-        ->html(),
-      Column::make('E-mail', 'email')
-        ->sortable()
-        ->searchable()
-        ->secondaryHeader(function() {
-          return view('tables.cells.input-search', ['field' => 'email', 'columnSearch' => $this->columnSearch]);
-        }),
-//      Column::make('Address', 'address.address')
-//        ->sortable()
-//        ->searchable()
-//        ->collapseOnTablet(),
-//      Column::make('Address Group', 'address.group.name')
-//        ->sortable()
-//        ->searchable()
-//        ->collapseOnTablet(),
-//      Column::make('Group City', 'address.group.city.name')
-//        ->sortable()
-//        ->searchable()
-//        ->collapseOnTablet(),
-//      BooleanColumn::make('Active')
-//        ->sortable()
-//        ->collapseOnMobile(),
-      Column::make('Verified', 'email_verified_at')
-        ->sortable()
-        ->collapseOnTablet(),
-//      Column::make('Tags')
-//        ->label(fn($row) => $row->tags->pluck('name')->implode(', ')),
-      // Column::make('Actions')
-      //     ->label(
-      //         fn($row, Column $column) => view('tables.cells.actions')->withUser($row)
-      //     )
-      //     ->unclickable(),
-      ButtonGroupColumn::make('Actions')
-        ->unclickable()
-        ->attributes(function($row) {
-          return [
-            'class' => 'space-x-2',
-          ];
-        })
-        ->buttons([
-          LinkColumn::make('My Link 1')
-            ->title(fn($row) => 'Link 1')
-            ->location(fn($row) => 'https://'.$row->id.'google1.com')
-            ->attributes(function($row) {
-              return [
-                'target' => '_blank',
-                'class' => 'underline text-blue-500',
-              ];
-            }),
-          LinkColumn::make('My Link 2')
-            ->title(fn($row) => 'Link 2')
-            ->location(fn($row) => 'https://'.$row->id.'google2.com')
-            ->attributes(function($row) {
-              return [
-                'class' => 'underline text-blue-500',
-              ];
-            }),
-          LinkColumn::make('My Link 3')
-            ->title(fn($row) => 'Link 3')
-            ->location(fn($row) => 'https://'.$row->id.'google3.com')
-            ->attributes(function($row) {
-              return [
-                'class' => 'underline text-blue-500',
-              ];
-            })
-        ]),
-    ];
+  public function delete(Project $project){
+    $project->delete();
+
+    $this->flash('success', 'Successfully Delete Project '.$project->title );
   }
 
-  public function filters(): array
-  {
-    return [
-      TextFilter::make('Name')
-        ->config([
-          'maxlength' => 5,
-          'placeholder' => 'Search Name',
-        ])
-        ->filter(function(Builder $builder, string $value) {
-          $builder->where('users.name', 'like', '%'.$value.'%');
-        }),
-//      MultiSelectFilter::make('Tags')
-//        ->options(
-//          Tag::query()
-//            ->orderBy('name')
-//            ->get()
-//            ->keyBy('id')
-//            ->map(fn($tag) => $tag->name)
-//            ->toArray()
-//        )->filter(function(Builder $builder, array $values) {
-//          $builder->whereHas('tags', fn($query) => $query->whereIn('tags.id', $values));
-//        })
-//        ->setFilterPillValues([
-//          '3' => 'Tag 1',
-//        ]),
-      SelectFilter::make('E-mail Verified', 'email_verified_at')
-        ->setFilterPillTitle('Verified')
-        ->options([
-          ''    => 'Any',
-          'yes' => 'Yes',
-          'no'  => 'No',
-        ])
-        ->filter(function(Builder $builder, string $value) {
-          if ($value === 'yes') {
-            $builder->whereNotNull('email_verified_at');
-          } elseif ($value === 'no') {
-            $builder->whereNull('email_verified_at');
-          }
-        }),
-      SelectFilter::make('Active')
-        ->setFilterPillTitle('User Status')
-        ->setFilterPillValues([
-          '1' => 'Active',
-          '0' => 'Inactive',
-        ])
-        ->options([
-          '' => 'All',
-          '1' => 'Yes',
-          '0' => 'No',
-        ])
-        ->filter(function(Builder $builder, string $value) {
-          if ($value === '1') {
-            $builder->where('active', true);
-          } elseif ($value === '0') {
-            $builder->where('active', false);
-          }
-        }),
-      DateFilter::make('Verified From')
-        ->config([
-          'min' => '2024-01-01',
-          'max' => '2024-12-31',
-        ])
-        ->filter(function(Builder $builder, string $value) {
-          $builder->where('email_verified_at', '>=', $value);
-        }),
-      DateFilter::make('Verified To')
-        ->filter(function(Builder $builder, string $value) {
-          $builder->where('email_verified_at', '<=', $value);
-        }),
-    ];
-  }
-  public function builder(): Builder
-  {
-    return User::query()
-      ->when($this->columnSearch['name'] ?? null, fn ($query, $name) => $query->where('users.name', 'like', '%' . $name . '%'))
-      ->when($this->columnSearch['email'] ?? null, fn ($query, $email) => $query->where('users.email', 'like', '%' . $email . '%'));
-  }
+  public function setSortBy($sortByField){
 
-  public function bulkActions(): array
-  {
-    return [
-      'activate' => 'Activate',
-      'deactivate' => 'Deactivate',
-      'export' => 'Export',
-    ];
-  }
-
-  public function activate()
-  {
-    User::whereIn('id', $this->getSelected())->update(['active' => true]);
-
-    $this->clearSelected();
-  }
-
-  public function deactivate()
-  {
-    User::whereIn('id', $this->getSelected())->update(['active' => false]);
-
-    $this->clearSelected();
-  }
-
-  public function reorder($items): void
-  {
-    foreach ($items as $item) {
-      User::find((int)$item['value'])->update(['sort' => (int)$item['order']]);
+    if($this->sortBy === $sortByField){
+      $this->sortDir = ($this->sortDir == "ASC") ? 'DESC' : "ASC";
+      return;
     }
+
+    $this->sortBy = $sortByField;
+    $this->sortDir = 'DESC';
   }
 
+
+
+  public function storeProject()
+  {
+    //on form submit validation
+    $this->validate([
+      'title' => 'required|max:255|min:5',
+    ]
+      ,[
+        'title.required' => 'The project name field is required.',
+        'title.min' => 'Project Name Should be Minimum of 5 Character'
+    ]
+    );
+
+    //Add Data into Post table Data
+    $post = new Project();
+    $post->title = $this->title;
+    $post->status = 1;
+    $post->user_id=Auth::id();
+    $post->save();
+
+    $this->flash('success', 'Successfully Create Project');
+//    $this->alert('success', 'Successfully Create Project');
+    $this->title = '';
+    //For hide modal after add posts success
+    $this->dispatch('close-modal');
+  }
+
+  public function render()
+  {
+    return view('livewire.project-table',
+      [
+        'projects' => Project::search($this->search)
+//          ->when($this->admin !== '',function($query){
+//            $query->where('is_admin',$this->admin);
+//          })
+            ->where('user_id','=',Auth::id())
+          ->orderBy($this->sortBy,$this->sortDir)
+          ->Paginate($this->perPage)
+      ]
+    );
+  }
 }
