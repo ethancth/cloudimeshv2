@@ -32,14 +32,15 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ],
-        [    'tenant.required_if' => 'The tenant field is required.',])->validate();
+        [    'tenant.required_if' => 'The tenant field is required.',]
+        )->validate();
 
         return DB::transaction(function () use ($input) {
             return tap(User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-            ]), function (User $user) {
+            ]), function (User $user) use ($input) {
               $check_exist=TeamInvitation::where('email','=',$user->email)->orderByDesc('id')->get();
 
               if($check_exist->count()){
@@ -47,7 +48,7 @@ class CreateNewUser implements CreatesNewUsers
                 $user->current_team_id=$check_exist[0]->team_id;
                 $user->save();
               }else{
-                $this->createTeam($user);
+                $this->createTeam($user,$input);
               }
             });
         });
@@ -56,11 +57,11 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a personal team for the user.
      */
-    protected function createTeam(User $user): void
+    protected function createTeam(User $user,$request): void
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Tenants",
+            'name' => explode(' ', $request['tenant'],2)[0],
             'personal_team' => true,
         ]));
     }

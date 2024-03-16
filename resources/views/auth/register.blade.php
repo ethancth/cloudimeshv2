@@ -53,8 +53,12 @@ $configData = Helper::appClasses();
             <label for="email" class="form-label">Email</label>
             @if(request()->query('email'))
               <input type="text" class="form-control @error('email') is-invalid @enderror" readonly id="email" name="email" placeholder="john@example.com" value="{{ request()->query('email') }}" />
+
+              <input class="hidden" type="text" class="form-control" id="invitation" name="invitation" readonly placeholder="" value="true" />
             @else
               <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" value="{{ old('email') }}" />
+
+              <input class="hidden" type="text" class="form-control" id="invitation" name="invitation" readonly placeholder="" value="false" />
 
             @endif
             @error('email')
@@ -78,7 +82,6 @@ $configData = Helper::appClasses();
               <span class="fw-medium">{{ $message }}</span>
             </span>
             @enderror
-            <input class="hidden" type="text" class="form-control" id="invitation" name="invitation" readonly placeholder="" value="false" />
 
           </div>
           @endif

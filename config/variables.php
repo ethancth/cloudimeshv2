@@ -1,8 +1,8 @@
 <?php
 // Variables
 return [
-  "creatorName" => "EC",
-  "creatorUrl" => "EC",
+  "creatorName" => "CloudiMesh",
+  "creatorUrl" => "CloudiMesh",
   "templateName" => "CloudiMesh",
   "templateSuffix" => " - ",
   "templateVersion" => "1.0.0",

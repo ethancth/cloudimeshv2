@@ -27,10 +27,6 @@ class Project extends Model
   {
     return $this->hasMany(User::class,'user_id','id');
   }
-  public function owner2()
-  {
-    return $this->hasMany(User::class,'id','user_id');
-  }
 
   public function scopeSearch($query, $value){
     $query->where('title','like',"%{$value}%")->orWhere('price','like',"%{$value}%")->orWhere('status','like',"%{$value}%")->where('user_id','=',Auth::id());

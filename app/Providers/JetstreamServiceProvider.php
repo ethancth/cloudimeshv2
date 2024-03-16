@@ -53,10 +53,40 @@ class JetstreamServiceProvider extends ServiceProvider
             'delete',
         ])->description('Administrator users can perform any action.');
 
-        Jetstream::role('editor', 'Editor', [
+        Jetstream::role('requester', 'Requester', [
             'read',
             'create',
             'update',
-        ])->description('Editor users have the ability to read, create, and update.');
+            'read.project',
+            'create.project',
+            'update.project',
+            'delete.project',
+        ])->description('Requester users have the ability to read, create, and update.');
+
+      Jetstream::role('approver', 'Approver', [
+        'read',
+        'create',
+        'update',
+        'read.project',
+        'create.project',
+        'update.project',
+        'delete.project',
+        'approve.project.lv1',
+        'reject.project.lv1',
+        'approve.project.lv2',
+        'reject.project.lv2',
+      ])->description('Approver users have the ability to read, create, update, and approve level 2 Project.');
+
+      Jetstream::role('granter', 'Granter', [
+        'read',
+        'create',
+        'update',
+        'read.project',
+        'create.project',
+        'update.project',
+        'delete.project',
+        'approve.project.lv2',
+        'reject.project.lv2',
+      ])->description('Granter users have the ability to read, create, update, and approve level 2 Project ');
     }
 }
