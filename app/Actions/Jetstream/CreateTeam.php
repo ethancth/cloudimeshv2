@@ -21,9 +21,9 @@ class CreateTeam implements CreatesTeams
     {
         Gate::forUser($user)->authorize('create', Jetstream::newTeamModel());
 
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-        ])->validateWithBag('createTeam');
+      Validator::make($input, [
+        'name' => ['required', 'string', 'min:5', 'max:255', 'unique:teams,name,NULL,id,user_id,'  . auth()->id(),],
+      ])->validateWithBag('createTeam');
 
         AddingTeam::dispatch($user);
 
