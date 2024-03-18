@@ -62,7 +62,7 @@ class Projecttable extends Component
   {
     //on form submit validation
     $this->validate([
-      'title' => 'required|max:255|min:5|unique:projects,title,NULL,id,user_id,'  . auth()->id(),
+      'title' => 'required|max:100|min:5|unique:projects,title,NULL,id,user_id,'  . auth()->id(),
     ],
 
       [
