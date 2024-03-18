@@ -63,7 +63,7 @@ class JetstreamServiceProvider extends ServiceProvider
             'delete.project',
         ])->description('Requester users have the ability to read, create, and update.');
 
-      Jetstream::role('approver', 'Approver', [
+      Jetstream::role('approverlv1', 'Approver lv1', [
         'read',
         'create',
         'update',
@@ -75,7 +75,7 @@ class JetstreamServiceProvider extends ServiceProvider
         'reject.project.lv1',
       ])->description('Approver users have the ability to read, create, update, and approve level 1 Project.');
 
-      Jetstream::role('granter', 'Granter', [
+      Jetstream::role('approverlv2', 'Approver lv2', [
         'read',
         'create',
         'update',
@@ -85,6 +85,6 @@ class JetstreamServiceProvider extends ServiceProvider
         'delete.project',
         'approve.project.lv2',
         'reject.project.lv2',
-      ])->description('Granter users have the ability to read, create, update, and approve level 2 Project ');
+      ])->description('Approver lv2 users have the ability to read, create, update, and approve level 2 Project ');
     }
 }
