@@ -68,6 +68,7 @@ class Projecttable extends Component
       [
         'title.required' => 'The project name field is required.',
         'title.min' => 'Project Name Should be Minimum of 5 Character.',
+        'title.max' => 'Project Name Must not be greater than 100 characters.',
         'title.unique' => 'Project Name has already been taken.'
       ]
     );
