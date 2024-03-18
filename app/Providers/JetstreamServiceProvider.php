@@ -73,9 +73,7 @@ class JetstreamServiceProvider extends ServiceProvider
         'delete.project',
         'approve.project.lv1',
         'reject.project.lv1',
-        'approve.project.lv2',
-        'reject.project.lv2',
-      ])->description('Approver users have the ability to read, create, update, and approve level 2 Project.');
+      ])->description('Approver users have the ability to read, create, update, and approve level 1 Project.');
 
       Jetstream::role('granter', 'Granter', [
         'read',
