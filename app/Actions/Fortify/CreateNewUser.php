@@ -27,8 +27,8 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'tenant' => ['required_if:invitation,false','string', 'min:5', 'max:255', 'unique:teams,name,NULL,id'],
-            'invitation' => ['required', 'in:true,false'],
+//            'tenant' => ['required_if:invitation,false','string', 'min:5', 'max:255', 'unique:teams,name,NULL,id'],
+//            'invitation' => ['required', 'in:true,false'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ],
@@ -44,7 +44,7 @@ class CreateNewUser implements CreatesNewUsers
               $check_exist=TeamInvitation::where('email','=',$user->email)->orderByDesc('id')->get();
 
               if($check_exist->count()){
-
+                  $this->createTeam($user,$input);
                 $this->joinTeam($check_exist[0]->id);
                 $user->current_team_id=$check_exist[0]->team_id;
                 $user->save();
@@ -62,7 +62,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $request['tenant'],2)[0],
+            'name' => explode(' ', $user->email,2)[0].' Tenants',
             'personal_team' => true,
         ]));
     }
