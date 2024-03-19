@@ -7,7 +7,15 @@
       "slug": "project",
       "url": "project"
 
-    }
+    },
+      {
+          "name": "Department",
+          "icon": "menu-icon tf-icons ti ti-users",
+          "slug": "departments",
+          "url": "departments"
+
+      }
+
 
   ]
 }

@@ -44,6 +44,7 @@ class CreateNewUser implements CreatesNewUsers
               $check_exist=TeamInvitation::where('email','=',$user->email)->orderByDesc('id')->get();
 
               if($check_exist->count()){
+
                 $this->joinTeam($check_exist[0]->id);
                 $user->current_team_id=$check_exist[0]->team_id;
                 $user->save();
