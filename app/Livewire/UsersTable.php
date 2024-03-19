@@ -2,62 +2,32 @@
 
 namespace App\Livewire;
 
-use App\Models\Project;
 use App\Models\User;
-use Livewire\Attributes\Url;
-use Livewire\Component;
-use Livewire\WithPagination;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class UsersTable extends Component
+class UsersTable extends DataTableComponent
 {
-  use WithPagination;
+  protected $model = User::class;
 
-  #[Url(history:true)]
-  public $search = '';
-
-  #[Url(history:true)]
-  public $admin = '';
-
-  #[Url(history:true)]
-  public $sortBy = 'created_at';
-
-  #[Url(history:true)]
-  public $sortDir = 'DESC';
-
-  #[Url()]
-  public $perPage = 5;
-
-
-  public function updatedSearch(){
-    $this->resetPage();
-  }
-
-  public function delete(User $user){
-    $user->delete();
-  }
-
-  public function setSortBy($sortByField){
-
-    if($this->sortBy === $sortByField){
-      $this->sortDir = ($this->sortDir == "ASC") ? 'DESC' : "ASC";
-      return;
-    }
-
-    $this->sortBy = $sortByField;
-    $this->sortDir = 'DESC';
-  }
-
-  public function render()
+  public function configure(): void
   {
-    return view('livewire.users-table',
-      [
-        'users' => Project::search($this->search)
-//          ->when($this->admin !== '',function($query){
-//            $query->where('is_admin',$this->admin);
-//          })
-          ->orderBy($this->sortBy,$this->sortDir)
-          ->paginate($this->perPage)
-      ]
-    );
+    $this->setPrimaryKey('id');
+  }
+
+  public function columns(): array
+  {
+    return [
+      Column::make('Name')
+        ->sortable()
+        ->searchable(),
+      Column::make('E-mail', 'email')
+        ->sortable()
+        ->searchable(),
+      Column::make('Address', 'email')
+        ->sortable()
+        ->searchable()
+        ->collapseOnTablet(),
+    ];
   }
 }

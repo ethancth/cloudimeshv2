@@ -25,7 +25,7 @@ return new class extends Migration
           $table->string('total_storage')->nullable()->default('0');
           $table->string('total_server')->nullable()->default('0');
           $table->string('total_server_on')->nullable()->default('0');
-          $table->string('company_id')->nullable();
+          $table->string('tenant_id')->references('id')->on('teams');
           $table->decimal('price','10',2)->default(0);
           $table->decimal('price_actual','10',5)->default(0);
           $table->timestamps();

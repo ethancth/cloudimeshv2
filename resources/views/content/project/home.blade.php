@@ -23,6 +23,36 @@
       $('#createProjectModal').modal('hide');
 
     });
+    window.addEventListener('swal:modal',event=>{
+
+      Swal.fire({
+        icon: 'success',
+        title: event.detail.title,
+        text: 'Item Created Successfully.',
+        customClass: {
+          confirmButton: 'btn btn-success'
+        }
+      });
+    });
+    window.addEventListener('swal:confirm',event=>{
+      Swal.fire({
+        icon: event.detail[0].type,
+        title: event.detail[0].title,
+        text: event.detail[0].text,
+        confirmButtonText: 'Yes',
+        customClass: {
+          confirmButton: 'btn btn-primary me-3',
+          cancelButton: 'btn btn-label-secondary'
+        },
+      }).then((willDelete)=>
+        {
+          if(willDelete){
+            Livewire.dispatch('delete', { id: event.detail[0].id })
+          }
+        }
+      )
+      ;
+    });
 
 
     // window.addEventListener('show-edit-post-modal', event => {
@@ -45,5 +75,5 @@
   <div wire:offline>
     This device is currently offline.
   </div>
-   <livewire:projecttable />
+   <livewire:project.projectlist />
 @endsection

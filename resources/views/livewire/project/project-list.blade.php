@@ -50,7 +50,7 @@
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             </div>
             <input wire:model.live.debounce.300ms="search" type="text"
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
+                   class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
                    placeholder="Search" required="">
           </div>
         </div>
@@ -85,23 +85,23 @@
 
 
           @foreach ($projects as $project)
-          <tr wire:key="{{ $project->id }}" >
-            <td><span class="badge bg-label-info me-1">Draft</span></td>
-            <td><span class="fw-medium">  {{ $project->title }}</span></td>
-            <td>$  {{ $project->price}}</td>
-            <td>{{ $project->created_at }}</td>
+            <tr wire:key="{{ $project->id }}" >
+              <td><span class="badge bg-label-info me-1">Draft</span></td>
+              <td><span class="fw-medium">  {{ $project->title }}</span></td>
+              <td>$  {{ $project->price}}</td>
+              <td>{{ $project->created_at }}</td>
 
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="ti ti-pencil me-1"></i> Edit</a>
-                  <a class="dropdown-item"  onclick="confirm('Are you sure you want to delete {{ $project->title }} ?') || event.stopImmediatePropagation()"
-                     wire:click="delete({{ $project->id }})"><i class="ti ti-trash me-1"></i> Delete</a>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);"><i class="ti ti-pencil me-1"></i> Edit</a>
+                    <a class="dropdown-item" wire:click="deleteConfirm({{ $project->id }})"><i class="ti ti-trash me-1"></i> Delete</a>
+
+                  </div>
                 </div>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
           @endforeach
           </tbody>
         </table>
@@ -111,7 +111,7 @@
           <div class="flex space-x-4 items-center mb-3">
             <label class="w-32 text-sm font-medium text-gray-900">Per Page</label>
             <select wire:model.live='perPage'
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
               <option value="5">5</option>
               <option value="7">7</option>
               <option value="10">10</option>

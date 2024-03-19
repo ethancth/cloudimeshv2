@@ -155,7 +155,7 @@
           <tr wire:key="{{ $user->id }}" >
             <td><span class="badge bg-label-info me-1">Draft</span></td>
             <td><span class="fw-medium">  {{ $user->name }}</span></td>
-            <td>  {{ $user->currentTeam->id}}</td>
+            <td>  {{ $user->id}}</td>
             <td>{{ $user->created_at }}</td>
 
             <td>
