@@ -88,7 +88,7 @@
                         <tr wire:key="{{ $record->id }}" >
                             <td><span class="badge bg-label-info me-1">{{ $record->default}}</span></td>
                             <td><span class="fw-medium">  {{ $record->name }}</span></td>
-                            <td>$  {{ $record->default}}</td>
+                            <td>0</td>
                             <td>{{ $record->created_at }}</td>
 
                             <td>
