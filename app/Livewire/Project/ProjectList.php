@@ -55,12 +55,12 @@ class ProjectList extends Component
     $project=Project::where('id','=',$id)->first();
     $project->delete();
 
-    $this->flash('success', 'Successfully Delete Project '.$project->title );
-//    $this->dispatch('swal:modal',[
-//      'type'=>'success',
-//      'title'=>'Successfully Delete Project',
-//      'text'=>$project->title,
-//    ]);
+//    $this->flash('success', 'Successfully Delete Project '.$project->title );
+    $this->dispatch('swal:modal',[
+      'type'=>'success',
+      'title'=>'Successfully Delete Project',
+      'text'=>$project->title,
+    ]);
   }
 
   public function setSortBy($sortByField){
@@ -91,6 +91,7 @@ class ProjectList extends Component
         'title.unique' => 'Project Name has already been taken.'
       ]
     );
+
     //Add Data into Post table Data
     $post = new Project();
     $post->title = $this->title;
@@ -98,19 +99,17 @@ class ProjectList extends Component
     $post->user_id=Auth::id();
     $post->tenant_id=Auth::user()->current_team_id;
     $post->save();
-
-    $this->flash('success', 'Successfully Create Project');
+      $this->dispatch('closeModal');
 //    $this->alert('success', 'Successfully Create Project');
     $this->title = '';
     //For hide modal after add posts success
-//    $this->dispatch('swal:modal',[
-//      'type'=>'success',
-//      'title'=>'Successfully Delete Project',
-//      'text'=>$post->title,
-//
-//
-//    ]);
-    $this->dispatch('close-modal');
+    $this->dispatch('swal:modal',[
+      'type'=>'success',
+      'title'=>'Successfully Delete Project',
+      'text'=>$post->title,
+    ]);
+
+
 
   }
 

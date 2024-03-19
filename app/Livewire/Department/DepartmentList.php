@@ -56,7 +56,15 @@ class DepartmentList extends Component
         $record=Department::where('id','=',$id)->first();
         $record->delete();
 
-        $this->flash('success', 'Successfully Delete Department '.$record->title );
+
+//    $this->alert('success', 'Successfully Create Project');
+        $this->dispatch('close-modal');
+        $this->name = '';
+        $this->dispatch('swal:modal',[
+            'type'=>'success',
+            'title'=>'Department Deleted Successfully',
+            'text'=>'',
+        ]);
 
     }
 
@@ -94,9 +102,13 @@ class DepartmentList extends Component
         $post->default = 0;
         $post->tenant_id=Auth::user()->current_team_id;
         $post->save();
-        $this->flash('success', 'Successfully Create Department');
-        $this->name = '';
         $this->dispatch('close-modal');
+        $this->name = '';
+        $this->dispatch('swal:modal',[
+            'type'=>'success',
+            'title'=>'Department Created Successfully',
+            'text'=>'',
+        ]);
 
     }
 
