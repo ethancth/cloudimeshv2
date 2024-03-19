@@ -68,23 +68,23 @@ $configData = Helper::appClasses();
             @enderror
           </div>
 
-          @if(!request()->query('email'))
-          <div class="mb-3">
-            <label for="email" class="form-label">Tenant</label>
-            @if(request()->query('tenant'))
-              <input type="text" class="form-control @error('tenant') is-invalid @enderror" id="tenant" name="tenant" placeholder="Preferer Tenant Name" value="{{ request()->query('email') }}" />
-            @else
-              <input type="text" class="form-control @error('tenant') is-invalid @enderror" id="tenant" name="tenant" placeholder="john@example.com" value="{{ old('tenant') }}" />
+{{--          @if(!request()->query('email'))--}}
+{{--          <div class="mb-3">--}}
+{{--            <label for="email" class="form-label">Tenant</label>--}}
+{{--            @if(request()->query('tenant'))--}}
+{{--              <input type="text" class="form-control @error('tenant') is-invalid @enderror" id="tenant" name="tenant" placeholder="Preferer Tenant Name" value="{{ request()->query('email') }}" />--}}
+{{--            @else--}}
+{{--              <input type="text" class="form-control @error('tenant') is-invalid @enderror" id="tenant" name="tenant" placeholder="john@example.com" value="{{ old('tenant') }}" />--}}
 
-            @endif
-            @error('tenant')
-            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
-            @enderror
+{{--            @endif--}}
+{{--            @error('tenant')--}}
+{{--            <span class="invalid-feedback" role="alert">--}}
+{{--              <span class="fw-medium">{{ $message }}</span>--}}
+{{--            </span>--}}
+{{--            @enderror--}}
 
-          </div>
-          @endif
+{{--          </div>--}}
+{{--          @endif--}}
           <div class="mb-3 form-password-toggle">
             <label class="form-label" for="password">Password</label>
             <div class="input-group input-group-merge @error('password') is-invalid @enderror">
