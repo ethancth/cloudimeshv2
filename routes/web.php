@@ -6,7 +6,6 @@ use App\Http\Controllers\Management\UserManagement;
 use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\dashboard\Crm;
 use App\Http\Controllers\language\LanguageController;
-use App\Livewire\Department;
 require __DIR__.'/jetstream.php';
 require __DIR__.'/fortity.php';
 

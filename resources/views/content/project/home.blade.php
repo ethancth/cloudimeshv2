@@ -75,5 +75,5 @@
   <div wire:offline>
     This device is currently offline.
   </div>
-   <livewire:project.projectlist />
+   <livewire:project.project-list />
 @endsection
