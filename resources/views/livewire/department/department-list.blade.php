@@ -43,7 +43,7 @@
             <h5 class="card-header"></h5>
             <div class="flex items-center justify-between d p-4">
                 <div class="flex">
-                    <button class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#createDepartmentModal">Create New Department</button>
+                    <button class="btn btn-sm  mt-50 btn-primary" style="float: right;" data-toggle="modal" data-target="#createDepartmentModal">Create New Department</button>
                 </div>
                 <div class="flex">
                     <div class="relative w-full">
