@@ -42,15 +42,18 @@
         <div class="card">
             <h5 class="card-header"></h5>
             <div class="flex items-center justify-between d p-4">
-                <div class="flex">
-                    <button class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#createDepartmentModal">Create New Department</button>
+                <div class="d-flex">
+                    <x-button class="btn-sm" data-toggle="modal" data-target="#createDepartmentModal">
+                        Create New Department
+                    </x-button>
+{{--                    <button class="btn btn-sm btn-primary" style="float: right;" data-toggle="modal" data-target="#createDepartmentModal">Create New Department</button>--}}
                 </div>
                 <div class="flex">
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         </div>
                         <input wire:model.live.debounce.300ms="search" type="text"
-                               class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
+                               class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  pl-10 p-2 "
                                placeholder="Search" required="">
                     </div>
                 </div>
