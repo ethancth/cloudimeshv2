@@ -4,7 +4,7 @@ return [
   "creatorName" => "CloudiMesh",
   "creatorUrl" => "CloudiMesh",
   "templateName" => "CloudiMesh",
-  "templateSuffix" => " - ",
+  "templateSuffix" => " ",
   "templateVersion" => "1.0.0",
   "templateFree" => false,
   "templateDescription" => "",

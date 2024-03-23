@@ -93,12 +93,12 @@ class ProjectList extends Component
     );
 
     //Add Data into Post table Data
-    $post = new Project();
-    $post->title = $this->title;
-    $post->status = 1;
-    $post->user_id=Auth::id();
-    $post->tenant_id=Auth::user()->current_team_id;
-    $post->save();
+    $project = new Project();
+      $project->title = $this->title;
+      $project->status = 1;
+      $project->user_id=Auth::id();
+      $project->tenant_id=Auth::user()->current_team_id;
+      $project->save();
       $this->dispatch('closeModal');
 //    $this->alert('success', 'Successfully Create Project');
     $this->title = '';
@@ -106,7 +106,7 @@ class ProjectList extends Component
     $this->dispatch('swal:modal',[
       'type'=>'success',
       'title'=>'Successfully Delete Project',
-      'text'=>$post->title,
+      'text'=>$project->title,
     ]);
 
 
@@ -115,6 +115,7 @@ class ProjectList extends Component
 
   public function render()
   {
+   // return view('livewire.project.project-list',
     return view('livewire.project.project-list',
       [
         'projects' => Project::search($this->search)

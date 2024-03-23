@@ -1,0 +1,13 @@
+{
+  "menu": [
+
+    {
+      "name": "My Project",
+      "icon": "menu-icon tf-icons ti ti-book",
+      "slug": "project",
+      "url": "project"
+
+    }
+
+  ]
+}

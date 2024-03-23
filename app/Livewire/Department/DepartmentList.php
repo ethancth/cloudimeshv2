@@ -5,6 +5,7 @@ namespace App\Livewire\Department;
 use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
@@ -111,9 +112,10 @@ class DepartmentList extends Component
         ]);
 
     }
-
+    #[Layout('content.app')]
     public function render()
     {
+
         return view('livewire.department.department-list',
             [
                 'departments' => Department::search($this->search)
@@ -121,7 +123,7 @@ class DepartmentList extends Component
                     ->orderBy($this->sortBy,$this->sortDir)
                     ->Paginate($this->perPage)
             ]
-        );
+        )->layout('content.app');;
     }
 
 }

@@ -19,7 +19,7 @@ Route::middleware([
 // Main Page Route
   Route::get('/', [ProjectsController::class, 'Index'])->name('laravel-example-user-management');
   Route::get('/project', [ProjectsController::class, 'Index'])->name('project');
-  Route::get('/projectv2', [ProjectsController::class, 'Index'])->name('project');
+
   Route::get('/dashboard/analytics', [Analytics::class, 'index'])->name('dashboard-analytics');
   Route::get('/dashboard/crm', [Crm::class, 'index'])->name('dashboard-crm');
 // locale
@@ -28,6 +28,7 @@ Route::middleware([
 
 // laravel example
   Route::get('/user-management', [UserManagement::class, 'UserManagement'])->name('user-management');
+  Route::get('/d2', \App\Livewire\Department\DepartmentList::class)->name('departments');
   Route::resource('/user-list', UserManagement::class);
 
     Route::get('/departments', function () {

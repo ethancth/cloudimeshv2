@@ -23,9 +23,17 @@ $configData = Helper::appClasses();
 
 
   <div class="menu-inner-shadow"></div>
+    @php
 
+
+        if(Auth::user()->teamRole(Auth::user()->currentTeam)->name=='Owner')
+          $_new_menu= $menuData[0]->menu;
+        else{
+              $_new_menu= $menuData[2]->menu;
+        }
+    @endphp
   <ul class="menu-inner py-1">
-    @foreach ($menuData[0]->menu as $menu)
+    @foreach ($_new_menu as $menu)
 
     {{-- adding active and open class if child is active --}}
 

@@ -77,8 +77,6 @@
 @endsection
 
 @section('content')
-  <div wire:offline>
-    This device is currently offline.
-  </div>
+
    <livewire:project.project-list />
 @endsection
