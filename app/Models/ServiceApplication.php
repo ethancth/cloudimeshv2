@@ -15,6 +15,7 @@ class ServiceApplication extends Model
         'enable_status',
         'tenant_id',
         'cost',
+        'status',
         'is_one_time_payment',
         'is_cost_per_core',
         'cpu_amount',
