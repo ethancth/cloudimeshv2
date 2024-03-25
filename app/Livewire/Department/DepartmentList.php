@@ -37,6 +37,7 @@ class DepartmentList extends Component
     public $perPage = 5;
 
 
+
     public function updatedSearch(){
         $this->resetPage();
     }

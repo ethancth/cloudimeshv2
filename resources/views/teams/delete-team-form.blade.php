@@ -13,7 +13,7 @@
     </p>
 
     <x-danger-button wire:click="$toggle('confirmingTeamDeletion')" wire:loading.attr="disabled">
-      {{ __('Delete Team') }}
+      {{ __('Delete') }}
     </x-danger-button>
 
     <!-- Delete Team Confirmation Modal -->
@@ -32,7 +32,7 @@
         </x-secondary-button>
 
         <x-danger-button wire:click="deleteTeam" wire:loading.attr="disabled">
-          {{ __('Delete Tenanats') }}
+          {{ __('Delete') }}
         </x-danger-button>
       </x-slot>
     </x-confirmation-modal>

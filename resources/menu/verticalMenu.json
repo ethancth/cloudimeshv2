@@ -14,6 +14,13 @@
           "slug": "departments",
           "url": "departments"
 
+      },
+      {
+          "name": "Service Application",
+          "icon": "menu-icon tf-icons ti ti-users",
+          "slug": "service-application",
+          "url": "service-application"
+
       }
 
 

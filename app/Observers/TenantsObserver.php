@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Department;
+use App\Models\ServiceApplication;
 use App\Models\Team;
 use Illuminate\Support\Str;
 
@@ -186,6 +187,24 @@ class TenantsObserver
 
 
         ];
+
+        foreach ($records as $result)
+        {
+
+            ServiceApplication::create(
+                [
+                    'name' => strtolower(preg_replace('/\s*/', '', $result['name'])),
+                    'display_name' => $result['name'],
+                    'cost' => $result['cost'],
+                    'display_description' => $result['name'],
+                    'tenant_id' => $team->id,
+                    'status' => 1,
+                    'is_one_time_payment' => $result['onetime'],
+                    'is_cost_per_core' => $result['costpercore'],
+                    'cpu_amount' =>$result['core'],
+                    'is_default'=>1
+                ]);
+        }
         foreach ($records_department as $result)
         {
 

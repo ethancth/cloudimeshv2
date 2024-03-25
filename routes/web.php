@@ -29,6 +29,7 @@ Route::middleware([
 // laravel example
   Route::get('/user-management', [UserManagement::class, 'UserManagement'])->name('user-management');
   Route::get('/d2', \App\Livewire\Department\DepartmentList::class)->name('departments');
+  Route::get('/service-application', \App\Livewire\Management\ServiceApplication::class)->name('service-application');
   Route::resource('/user-list', UserManagement::class);
 
     Route::get('/departments', function () {
