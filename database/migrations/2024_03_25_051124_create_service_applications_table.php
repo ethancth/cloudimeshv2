@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('display_name')->nullable();
             $table->string('display_description')->nullable();
-            $table->boolean('enable_status')->default(1);
+            $table->boolean('status')->default(1);
             $table->unsignedBigInteger('tenant_id');
             $table->foreign('tenant_id')->on('teams')->references('id');
             $table->decimal('cost',10,5);
