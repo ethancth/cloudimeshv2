@@ -16,6 +16,7 @@ class ProjectList extends Component
   use WithPagination, WithoutUrlPagination, LivewireAlert;
   protected $paginationTheme = 'bootstrap';
   protected $listeners = ['delete'];
+  public $add_btn_title='Add Project';
 
   public  $title, $status, $description;
 
@@ -123,6 +124,7 @@ class ProjectList extends Component
 //            $query->where('is_admin',$this->admin);
 //          })
           ->where('user_id','=',Auth::id())
+          ->where('tenant_id','=',Auth::user()->current_team_id)
           ->orderBy($this->sortBy,$this->sortDir)
           ->Paginate($this->perPage)
       ]

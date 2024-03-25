@@ -19,7 +19,7 @@ class DepartmentList extends Component
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
 
-    public  $name, $status, $description;
+    public  $name, $status, $description ,$add_btn_title= 'Create New Department';
 
     #[Url(history:true)]
     public $search = '';
