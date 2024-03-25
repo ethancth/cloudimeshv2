@@ -213,7 +213,7 @@ class TenantsObserver
                     'name' => $result['name'],
                     'tenant_id' => $team->id,
 //                    'slug' =>  Str::slug($result['name']),
-                    'is_default' =>1,
+                    'default' =>1,
                 ]);
         }
     }
