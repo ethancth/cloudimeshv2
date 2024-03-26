@@ -3,6 +3,7 @@
 namespace App\Livewire\Department;
 
 use App\Models\Department;
+use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -18,6 +19,9 @@ class DepartmentList extends Component
     use WithPagination, WithoutUrlPagination, LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
+
+    public $selectedhod=[];
+    public $selectedmember=[];
 
     public  $name, $status, $description ,$add_btn_title= 'Create New Department';
 
@@ -89,21 +93,26 @@ class DepartmentList extends Component
         //on form submit validation
         $this->validate([
             'name' => 'required|max:100|min:5|unique:departments,name,NULL,id,tenant_id,'  . auth()->id(),
+//            'selectedhod' => 'required',
+            'selectedmember' => 'required',
         ],
 
             [
                 'name.required' => 'The Department name field is required.',
                 'name.min' => 'Department Name Should be Minimum of 5 Character.',
                 'name.max' => 'Department Name Must not be greater than 100 characters.',
-                'name.unique' => 'Department Name has already been taken.'
+                'name.unique' => 'Department Name has already been taken.',
+//                'selectedhod.required' => 'The HOD field is required.',
+                'selectedmember.required' => 'The Member field is required.',
+
             ]
         );
         //Add Data into Post table Data
-        $post = new Department();
-        $post->name = $this->name;
-        $post->default = 0;
-        $post->tenant_id=Auth::user()->current_team_id;
-        $post->save();
+        $record = new Department();
+        $record->name = $this->name;
+        $record->default = 0;
+        $record->tenant_id=Auth::user()->current_team_id;
+        $record->save();
         $this->dispatch('close-modal');
         $this->name = '';
         $this->dispatch('swal:modal',[
@@ -117,8 +126,12 @@ class DepartmentList extends Component
     public function render()
     {
 
+        $team=Team::find(Auth::user()->current_team_id);
+
+
         return view('livewire.department.department-list',
             [
+                'teams' => $team->allUsers(),
                 'departments' => Department::search($this->search)
                     ->where('tenant_id','=',Auth::user()->current_team_id)
                     ->orderBy($this->sortBy,$this->sortDir)

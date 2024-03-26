@@ -86,11 +86,11 @@
                 <tr>
                     @include('livewire.includes.table-sortable-th',[
                         'name' => 'status',
-                        'displayName' => 'Status'
+                        'displayName' => 'Type'
                     ])
                     @include('livewire.includes.table-sortable-th',[
-                        'name' => 'title',
-                        'displayName' => 'ServiceApplication'
+                        'name' => 'name',
+                        'displayName' => 'Name'
                     ])
                     @include('livewire.includes.table-sortable-th',[
                         'name' => 'price',
@@ -110,7 +110,7 @@
 
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
-                        <td><span class="badge bg-label-info me-1">Draft</span></td>
+                        <td><span class="badge bg-label-info me-1">{{ $data->default_type  }}</span></td>
                         <td><span class="fw-medium">  {{ $data->display_name }}</span></td>
                         <td>$ {{ $data->status}}</td>
                         <td>{{ $data->created_at->diffForHumans() }}</td>

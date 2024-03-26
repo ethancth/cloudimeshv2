@@ -1,8 +1,7 @@
 <div>
 
-
     <!-- Create Department Modal -->
-    <div wire:ignore.self class="modal fade" id="createDepartmentModal" data-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div wire:ignore.self class="modal fade modal-end" id="createDepartmentModal" data-backdrop="static" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-transparent">
@@ -33,10 +32,108 @@
             </div>
         </div>
     </div>
-    <!--/ Add Permission Modal -->
 
 
-    <section>
+
+
+        <div wire:ignore.self  class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasEndLabel" class="offcanvas-title">New Record</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body mx-0 flex-grow-0">
+                <form wire:submit.prevent="storeDepartment" id="formdepartmemnt" name="formdepartmemnt">
+                    <input class="hidden"  name="_token" value="{{ csrf_token() }}">
+                    <div class="mb-1">
+                        <label class="form-label" for="name">Department Name</label>
+                        <input type="text" placeholder="Department Name" autofocus id="name" class="form-control" wire:model="name">
+                        @error('name')
+                        <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label" for="basic-default-display-name">HOD</label>
+                        <div wire:ignore>
+                        <select wire:model="selectedhod"  id="selectedhod"  multiple class="hod-select2 select2 form-select ">
+
+                            @foreach($teams as $team)
+                                <option value="{{$team->id}}"> {{$team->name}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                        @error('selectedhod')
+                        <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label class="form-label" for="basic-default-password1">Member</label>
+                        <div wire:ignore>
+                            <select wire:model="selectedmember"  id="selectedmember"  multiple class="hod-select2 select2 form-select ">
+                                @foreach($teams as $team)
+                                <option value="{{$team->id}}"> {{$team->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('selectedmember')
+                        <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-2 d-grid w-100">Continue</button>
+                    <button type="reset" class="btn btn-label-secondary d-grid w-100" data-bs-dismiss="offcanvas">Cancel</button>
+
+                </form>
+
+            </div>
+        </div>
+    @script
+    <script>
+        const formdepartmemnt = document.getElementById('formdepartmemnt');
+        const formhod = jQuery(formdepartmemnt.querySelector('[id="selectedhod"]'));
+
+        if (formhod.length) {
+
+
+            formhod.wrap('<div class="position-relative"></div>');
+            formhod.select2({
+                placeholder: '  Select HOD',
+                dropdownParent: formhod.parent(),
+            })
+                .on('change.select2', function () {
+                    let data= $(this).val()
+                    console.log(data);
+                    $wire.set('selectedhod', data,false)
+                    // Revalidate the color field when an option is chosen
+                    // fv.revalidateField('formCustomer');
+                });
+
+        }
+
+        const formmember = jQuery(formdepartmemnt.querySelector('[id="selectedmember"]'));
+
+        if (formmember.length) {
+
+
+            formmember.wrap('<div class="position-relative"></div>');
+            formmember.select2({
+                placeholder: '  Select Member',
+                dropdownParent: formmember.parent(),
+            })
+                .on('change.select2', function () {
+                    let data= $(this).val()
+
+                    $wire.set('selectedmember', data,false)
+                    // Revalidate the color field when an option is chosen
+                    // fv.revalidateField('formCustomer');
+                });
+
+        }
+    </script>
+    @endscript
+
+
 
 
         <div class="card">
@@ -90,10 +187,10 @@
                         <div class="">
                             <div class="btn-group">
                             </div>
-                            <button class="btn btn-secondary mb-3 mx-3  btn-primary waves-effect waves-light" tabindex="0"
-                                    aria-controls="DataTables_Table_0" type="button" data-toggle="modal"
-                                    data-target="#createDepartmentModal"><span><i class="ti ti-plus me-0 me-sm-1"></i><span
-                                        class="d-none d-sm-inline-block">{{$add_btn_title}}</span></span></button>
+
+
+                            <button class="btn btn-secondary mb-2 mx-3 btn-primary waves-effect waves-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">{{$add_btn_title}}</button>
+
                         </div>
                     </div>
                 </div>
@@ -157,7 +254,7 @@
             </div>
 
         </div>
-    </section>
+
 
 
 

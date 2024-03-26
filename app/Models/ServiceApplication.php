@@ -29,4 +29,8 @@ class ServiceApplication extends Model
     public function scopeSearch($query, $value){
         $query->where('display_name','like',"%{$value}%")->orWhere('cost','like',"%{$value}%")->where('tenant_id','=',Auth::user()->current_tenant_id);
     }
+
+    public function getDefaultTypeAttribute(){
+        return $this->is_default ? 'Default' : 'Custom';
+    }
 }
