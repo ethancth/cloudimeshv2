@@ -15,7 +15,7 @@ class Project extends Model
 
 
   protected $fillable = [
-    'title', 'owner','created_at', 'updated_at', 'slug','price','total_cpu','total_memory','total_server','total_server_on','total_storage','company_id','price_actual'
+    'updated_by','title', 'owner','created_at', 'updated_at', 'slug','price','total_cpu','total_memory','total_server','total_server_on','total_storage','company_id','price_actual'
   ];
 
 
@@ -51,6 +51,15 @@ class Project extends Model
     }
 
   }
+
+    public function getLastUpdateAttribute(){
+        if($this->updated_by==0){
+            return "System";
+        }else{
+            return User::find($this->updated_by)->first()->name;
+        }
+
+    }
 
   public function scopeWithStatus($query, $status)
   {

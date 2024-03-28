@@ -98,6 +98,7 @@ class ProjectList extends Component
       $project->title = $this->title;
       $project->status = 1;
       $project->user_id=Auth::id();
+      $project->updated_by=Auth::id();
       $project->tenant_id=Auth::user()->current_team_id;
       $project->save();
       $this->dispatch('closeModal');
