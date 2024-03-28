@@ -12,7 +12,7 @@ class Department extends Model
 
 
     protected $fillable = [
-      'tenant_id', 'name','default'
+      'tenant_id', 'name','default','updated_by'
     ];
 
     protected $casts = [
@@ -24,6 +24,14 @@ class Department extends Model
       return $this->belongsTo(Team::class,'id','tenant_id');
     }
 
+    public function getLastUpdateAttribute(){
+        if($this->updated_by==0){
+            return "System";
+        }else{
+            return User::find($this->updated_by)->first()->name;
+        }
+
+    }
 
     public function scopeSearch($query, $value){
         $query->where('name','like',"%{$value}%");

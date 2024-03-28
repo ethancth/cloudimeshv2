@@ -22,8 +22,10 @@ class DepartmentList extends Component
 
     public $selectedhod=[];
     public $selectedmember=[];
+    public $is_default_department=0;
+    public $edit_id;
 
-    public  $name, $status, $description ,$add_btn_title= 'Create New Department';
+    public  $name, $status, $description ,$add_btn_title= 'Create New Department',$canvas_title='New Record';
 
     #[Url(history:true)]
     public $search = '';
@@ -87,6 +89,17 @@ class DepartmentList extends Component
 
 
 
+    public function edit($id){
+        $record=Department::where('id','=',$id)->first();
+
+        $this->edit_id=$record->id;
+        $this->canvas_title = 'Edit Record';
+//        dump($record);
+
+        $this->name=$record->name;
+        $this->is_default_department=$record->default;
+        $this->canvas_title = 'New Record';
+    }
 
     public function storeDepartment()
     {
@@ -94,7 +107,7 @@ class DepartmentList extends Component
         $this->validate([
             'name' => 'required|max:100|min:5|unique:departments,name,NULL,id,tenant_id,'  . auth()->id(),
 //            'selectedhod' => 'required',
-            'selectedmember' => 'required',
+//            'selectedmember' => 'required',
         ],
 
             [
@@ -103,18 +116,37 @@ class DepartmentList extends Component
                 'name.max' => 'Department Name Must not be greater than 100 characters.',
                 'name.unique' => 'Department Name has already been taken.',
 //                'selectedhod.required' => 'The HOD field is required.',
-                'selectedmember.required' => 'The Member field is required.',
+//                'selectedmember.required' => 'The Member field is required.',
 
             ]
         );
         //Add Data into Post table Data
-        $record = new Department();
-        $record->name = $this->name;
-        $record->default = 0;
-        $record->tenant_id=Auth::user()->current_team_id;
-        $record->save();
-        $this->dispatch('close-modal');
+//        $record = new Department();
+//        $record->name = $this->name;
+//        $record->default = 0;
+//        $record->tenant_id=Auth::user()->current_team_id;
+//        $record->updated_by=Auth::id();
+//        $record->save();
+
+
+
+
+        $record=Department::updateOrCreate(
+            [
+                'id' => $this->edit_id,
+            ],
+            [
+                'name' => $this->name,
+                'tenant_id' =>  Auth::user()->current_team_id,
+                'updated_by' =>Auth::id(),
+
+            ]
+        );
         $this->name = '';
+        $this->edit_id='';
+        $this->selectedmember='';
+
+        $this->dispatch('close-canvas');
         $this->dispatch('swal:modal',[
             'type'=>'success',
             'title'=>'Department Created Successfully',
@@ -128,7 +160,7 @@ class DepartmentList extends Component
 
         $team=Team::find(Auth::user()->current_team_id);
 
-
+//dump($this->selectedmember);
         return view('livewire.department.department-list',
             [
                 'teams' => $team->allUsers(),

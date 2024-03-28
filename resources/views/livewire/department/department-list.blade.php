@@ -36,9 +36,9 @@
 
 
 
-        <div wire:ignore.self  class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
+        <div wire:ignore.self  class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCD" aria-labelledby="offcanvasCDLabel">
             <div class="offcanvas-header">
-                <h5 id="offcanvasEndLabel" class="offcanvas-title">New Record</h5>
+                <h5 id="offcanvasCDLabel" class="offcanvas-title">{{$canvas_title}}</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
@@ -46,7 +46,7 @@
                     <input class="hidden"  name="_token" value="{{ csrf_token() }}">
                     <div class="mb-1">
                         <label class="form-label" for="name">Department Name</label>
-                        <input type="text" placeholder="Department Name" autofocus id="name" class="form-control" wire:model="name">
+                        <input type="text" placeholder="Department Name" autofocus id="name" class="form-control" @if($is_default_department) readonly @endif wire:model="name">
                         @error('name')
                         <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
                         @enderror
@@ -82,14 +82,47 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary mb-2 d-grid w-100">Continue</button>
-                    <button type="reset" class="btn btn-label-secondary d-grid w-100" data-bs-dismiss="offcanvas">Cancel</button>
+                    <button type="reset" class="btn btn-label-secondary d-grid w-100 btn-ac-canvas" data-bs-dismiss="offcanvas">Cancel</button>
 
                 </form>
 
             </div>
         </div>
-    @script
+    @script()
     <script>
+
+
+        window.addEventListener('swal:modal',event=>{
+
+            Swal.fire({
+                icon: 'success',
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                customClass: {
+                    confirmButton: 'btn btn-success'
+                }
+            });
+        });
+        window.addEventListener('swal:confirm',event=>{
+            Swal.fire({
+                icon: event.detail[0].type,
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                confirmButtonText: 'Yes, Delete It',
+                customClass: {
+                    confirmButton: 'btn btn-primary me-3',
+                    cancelButton: 'btn btn-label-secondary'
+                },
+            }).then((willDelete)=>
+                {
+                    if(willDelete.value){
+                        Livewire.dispatch('delete', { id: event.detail[0].id })
+                    }
+                }
+            )
+            ;
+        });
+
         const formdepartmemnt = document.getElementById('formdepartmemnt');
         const formhod = jQuery(formdepartmemnt.querySelector('[id="selectedhod"]'));
 
@@ -103,7 +136,7 @@
             })
                 .on('change.select2', function () {
                     let data= $(this).val()
-                    console.log(data);
+                    // console.log(data);
                     $wire.set('selectedhod', data,false)
                     // Revalidate the color field when an option is chosen
                     // fv.revalidateField('formCustomer');
@@ -130,6 +163,14 @@
                 });
 
         }
+
+        window.addEventListener('close-canvas', event =>{
+            // $('#createDepartmentModal').modal('hide');
+            $('.btn-ac-canvas').click();
+            formmember.val('').trigger('change');
+            formhod.val('').trigger('change');
+
+        });
     </script>
     @endscript
 
@@ -138,25 +179,6 @@
 
         <div class="card">
             <h5 class="card-header"></h5>
-{{--            <div class="flex items-center justify-between d p-4">--}}
-{{--                <div class="d-flex">--}}
-{{--                    <x-button class="btn-sm" data-toggle="modal" data-target="#createDepartmentModal">--}}
-{{--                        Create New Department--}}
-{{--                    </x-button>--}}
-{{--                    <button class="btn btn-sm btn-primary" style="float: right;" data-toggle="modal" data-target="#createDepartmentModal">Create New Department</button>--}}
-{{--                </div>--}}
-{{--                <div class="flex">--}}
-{{--                    <div class="relative w-full">--}}
-{{--                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">--}}
-{{--                        </div>--}}
-{{--                        <input wire:model.live.debounce.300ms="search" type="text"--}}
-{{--                               class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  pl-10 p-2 "--}}
-{{--                               placeholder="Search" required="">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--            </div>--}}
-
             <div class="row mx-1 mt-3 mb-2">
                 <div
                     class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
@@ -189,7 +211,7 @@
                             </div>
 
 
-                            <button class="btn btn-secondary mb-2 mx-3 btn-primary waves-effect waves-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">{{$add_btn_title}}</button>
+                            <button class="btn btn-secondary mb-2 mx-3 btn-primary waves-effect waves-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCD" aria-controls="offcanvasCD">{{$add_btn_title}}</button>
 
                         </div>
                     </div>
@@ -227,20 +249,27 @@
 
                     @foreach ($departments as $record)
                         <tr wire:key="{{ $record->id }}" >
-                            <td><span class="badge bg-label-info me-1">{{ $record->default}}</span></td>
+                            @if($record->default)
+                                <td><span class="badge bg-label-primary me-1">Default</span></td>
+                            @else
+                                <td><span class="badge bg-label-success me-1">Custom</span></td>
+                            @endif
                             <td><span class="fw-medium">  {{ $record->name }}</span></td>
                             <td>0</td>
-                            <td>{{ $record->created_at->diffForHumans() }}</td>
+                            <td>{{$record->lastupdate ?? 'unknow'}} - {{ $record->created_at->diffForHumans() }}</td>
 
                             <td>
 
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="ti ti-pencil me-1"></i> Edit</a>
-                                        <a class="dropdown-item" wire:click="deleteConfirm({{ $record->id }})"><i class="ti ti-trash me-1"></i> Delete</a>
+                                <div class="">
 
-                                    </div>
+                                    <a wire:click="edit({{ $record->id }})" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCD" aria-controls="offcanvasCD"><i
+                                            class="ti ti-pencil me-1"></i></a>
+
+                                    @if(!$record->default)
+                                    <a wire:click="deleteConfirm({{ $record->id }})"><i
+                                            class="ti ti-trash me-1"></i></a>
+                                        @endif
+
                                 </div>
                             </td>
                         </tr>

@@ -1,6 +1,8 @@
 {
   "menu": [
-
+      {
+          "menuHeader": "Project"
+      },
     {
       "name": "My Project",
       "icon": "menu-icon tf-icons ti ti-book",
@@ -8,6 +10,9 @@
       "url": "project"
 
     },
+      {
+          "menuHeader": "Management"
+      },
       {
           "name": "Department",
           "icon": "menu-icon tf-icons ti ti-users",
