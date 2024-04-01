@@ -27,6 +27,15 @@
                     <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="mb-1">
+                    <label class="form-label" for="cost">Description </label>
+                    <input type="text" placeholder="display_description" autofocus id="display_description"
+                           class="form-control"
+                           wire:model="display_description">
+                    @error('display_description')
+                    <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <div class="mb-1">
                     <label class="form-label" for="cost">Cost </label>
@@ -174,7 +183,16 @@
                     <tr wire:key="{{ $data->id }}">
 
                         <td><span class="fw-medium">  {{ $data->name }}</span></td>
-                        <td><span class="fw-medium">  {{ $data->display_name }}</span></td>
+
+                        <td>
+                            <div class="d-flex justify-content-left align-items-center">
+                                <div class="d-flex flex-column"><a
+                                        class=" text-truncate text-body"
+                                    ><span
+                                            class="fw-bolder">  {{ $data->display_name }}</span></a><small class="emp_post text-muted">
+                                        {{ $data->display_description }}</small></div>
+                            </div>
+                        </td>
                         <td>$ {{ $data->cost}}</td>
 
                         <td><span

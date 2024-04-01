@@ -25,8 +25,27 @@ class Environment extends Model
     {
         return $this->display_name;
     }
+    public function getDefaultTypeAttribute(){
+        return $this->is_default ? 'Default' : 'Custom';
+    }
+
+
+    public function getPublishStatusAttribute()
+    {
+        return $this->status ? 'Active' : 'InActive';
+    }
+
 
     public function scopeSearch($query, $value){
         $query->where('name','like',"%{$value}%");
+    }
+
+    public function getLastUpdateAttribute(){
+        if($this->updated_by==0){
+            return "System";
+        }else{
+            return User::find($this->updated_by)->first()->name;
+        }
+
     }
 }

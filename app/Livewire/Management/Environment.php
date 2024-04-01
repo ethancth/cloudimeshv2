@@ -3,6 +3,7 @@
 namespace App\Livewire\Management;
 
 use App\Models\Environment as ModelEnvironment;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -26,10 +27,12 @@ class Environment extends Component
     use WithPagination, WithoutUrlPagination, LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
-    public $add_btn_title='Add Service Environment',$canvas_title='New Record';
 
+    //for view
+    public $add_btn_title='Add ',$canvas_title='New Record',$set_display_name='Environment',$edit_id,$canvas_btn_title='Create';
 
-    public  $title, $status, $description;
+    //model
+    public  $name,$display_name, $status, $display_description,$display_icon,$display_icon_colour;
 
     #[Url(history:true)]
     public $search = '';
@@ -61,6 +64,7 @@ class Environment extends Component
         ]);
 
     }
+
     public function delete($id){
 
 
@@ -70,7 +74,7 @@ class Environment extends Component
 //    $this->flash('success', 'Successfully Delete Project '.$project->title );
         $this->dispatch('swal:modal',[
             'type'=>'success',
-            'title'=>'Successfully Delete Envionment',
+            'title'=>'Successfully Delete '.$this->set_display_name,
             'text'=>$data->title,
         ]);
     }
@@ -86,53 +90,84 @@ class Environment extends Component
         $this->sortDir = 'DESC';
     }
 
-    public function edit($id){
-        $record=ModelEnvironment::where('id','=',$id)->first();
-
-        $this->edit_id=$record->id;
-        $this->canvas_title = 'Edit Record';
-//        dump($record);
-
-        $this->name=$record->name;
-        $this->is_default_department=$record->default;
+    public function click_add(){
         $this->canvas_title = 'New Record';
+        $this->canvas_btn_title='Create';
     }
 
+    public function edit($id){
+        $this->resetValidation();
+
+        $record=ModelEnvironment::where('id','=',$id)->first();
+        $this->edit_id=$record->id;
+
+        $this->canvas_title = 'Edit Record';
+        $this->canvas_btn_title='Saved';
+
+        $this->name=$record->name;
+        $this->display_name=$record->display_name;
+        $this->display_description=$record->display_description;
+        $this->display_icon=$record->display_icon;
+        $this->display_icon_colour=$record->display_icon_colour;
+        $this->status=$record->status;
+    }
     public function store()
     {
         //on form submit validation
         $this->validate([
-            'title' => 'required|max:100|min:5|unique:projects,title,NULL,id,user_id,'  . auth()->id(),
+            'name' => 'required|max:100|min:5|unique:environments,name,'.$this->edit_id.',id,tenant_id,'.Auth::user()->current_team_id,
+            'display_description' => 'required|max:100|min:5',
+            'display_name' => 'required|max:100|min:5',
+            'status' => 'required|in:0,1',
         ],
 
             [
-                'title.required' => 'The project name field is required.',
-                'title.min' => 'Project Name Should be Minimum of 5 Character.',
-                'title.max' => 'Project Name Must not be greater than 100 characters.',
-                'title.unique' => 'Project Name has already been taken.'
+                'name.required' => 'The '.$this->set_display_name.' name field is required.',
+                'status.required' => 'The publish selected option is required.',
+                'name.min' => $this->set_display_name.' Name Should be Minimum of 5 Character.',
+                'name.max' => $this->set_display_name.' Name Must not be greater than 100 characters.',
+                'name.unique' => $this->set_display_name.' Name has already been taken.'
             ]
         );
 
         //Add Data into Post table Data
-        $data = new ModelEnvironment();
-        $data->name = $this->name;
-        $data->display_name = $this->display_name;
-        $data->display_description = $this->display_description;
-        $data->display_icon = $this->display_icon;
-        $data->display_icon_colour = $this->display_icon_colour;
-        $data->status = 1;
-        $data->updated_by=Auth::id();
-        $data->tenant_id=Auth::user()->current_team_id;
-        $data->save();
-        $this->dispatch('closeModal');
-//    $this->alert('success', 'Successfully Create Project');
+        $record=ModelEnvironment::updateOrCreate(
+            [
+                'id' => $this->edit_id,
+            ],
+            [
+                'name' => $this->name,
+                'display_name' => $this->display_name,
+                'display_description' => $this->display_description,
+                'display_icon' => $this->display_icon,
+                'display_icon_colour' => $this->display_icon_colour,
+                'status' => $this->status,
+                'tenant_id' =>  Auth::user()->current_team_id,
+                'updated_by' =>Auth::id(),
+
+            ]
+        );
+
+        if($this->edit_id){
+            $_store_status='Updated';
+        }else{
+            $_store_status='Update';
+        }
+
+        $this->dispatch('close-canvas');
         $this->title = '';
-        //For hide modal after add posts success
+
         $this->dispatch('swal:modal',[
             'type'=>'success',
-            'title'=>'Successfully Create Envionment',
-            'text'=>$data->title,
+            'title'=>'Successfully '.$_store_status.' '.$this->set_display_name,
+            'text'=>$record->name,
         ]);
+
+
+
+        $this->id = '';
+        $this->edit_id = '';
+        $this->resetValidation();
 
 
 

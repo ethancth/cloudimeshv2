@@ -22,14 +22,14 @@
       },
       {
           "name": "Service Application",
-          "icon": "menu-icon tf-icons ti ti-users",
+          "icon": "menu-icon tf-icons ti ti-apps",
           "slug": "service-application",
           "url": "service-application"
 
       },
       {
           "name": "Environment",
-          "icon": "menu-icon tf-icons ti ti-users",
+          "icon": "menu-icon tf-icons ti ti-apps",
           "slug": "environment",
           "url": "environment"
 

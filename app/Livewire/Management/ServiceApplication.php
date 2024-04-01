@@ -31,10 +31,12 @@ class ServiceApplication extends Component
     use WithPagination, WithoutUrlPagination, LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
-    public $add_btn_title='Add Service Application',$canvas_title='New Record',$set_display_name='Service Application',$edit_id;
 
 
-    public  $name,$display_name, $status, $description,$cost,$_is_one_time_payment,$is_cost_per_core,$cpu_amount;
+    public $add_btn_title='Add Service Application',$canvas_title='New Record',$set_display_name='Service Application',$edit_id,$canvas_btn_title='Create';
+
+
+    public  $name,$display_name, $status, $description,$cost,$_is_one_time_payment,$is_cost_per_core,$cpu_amount,$display_description;
 
     #[Url(history:true)]
     public $search = '';
@@ -94,6 +96,7 @@ class ServiceApplication extends Component
 
     public function click_add(){
         $this->canvas_title = 'New Record';
+        $this->canvas_btn_title='Create';
     }
 
     public function edit($id){
@@ -103,9 +106,11 @@ class ServiceApplication extends Component
         $this->edit_id=$record->id;
 
         $this->canvas_title = 'Edit Record';
+        $this->canvas_btn_title='Update';
 
         $this->name=$record->name;
         $this->display_name=$record->display_name;
+        $this->display_description=$record->display_description;
         $this->cost=$record->cost;
         $this->status=$record->status;
     }
@@ -117,6 +122,7 @@ class ServiceApplication extends Component
         $this->validate([
             'name' => 'required|max:100|min:5|unique:service_applications,name,'.$this->edit_id.',id,tenant_id,'.Auth::user()->current_team_id,
             'display_name' => 'required|max:100|min:5',
+            'display_description' => 'required|max:100|min:5',
             'cost' => 'required|numeric|max:9999|min:0',
             'status' => 'required|in:0,1',
         ],
@@ -139,7 +145,7 @@ class ServiceApplication extends Component
             [
                 'name' => $this->name,
                 'display_name' => $this->display_name,
-                'display_description' => $this->display_name,
+                'display_description' => $this->display_description,
                 'cost' => $this->cost,
                 'is_one_time_payment' => '1',
                 'status' => $this->status,
