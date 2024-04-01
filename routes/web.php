@@ -32,6 +32,7 @@ Route::middleware([
   Route::get('/d2', \App\Livewire\Department\DepartmentList::class)->name('departments');
   Route::get('/service-application', \App\Livewire\Management\ServiceApplication::class)->name('service-application');
   Route::get('/environment', \App\Livewire\Management\Environment::class)->name('environment');
+  Route::get('/tier', \App\Livewire\Management\Tier::class)->name('tier');
   Route::resource('/user-list', UserManagement::class);
 
     Route::get('/departments', function () {

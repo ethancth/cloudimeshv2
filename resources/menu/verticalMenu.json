@@ -33,6 +33,13 @@
           "slug": "environment",
           "url": "environment"
 
+      },
+      {
+          "name": "Tier",
+          "icon": "menu-icon tf-icons ti ti-apps",
+          "slug": "tier",
+          "url": "tier"
+
       }
 
 
