@@ -47,6 +47,13 @@
           "slug": "operating-system",
           "url": "operating-system"
 
+      },
+      {
+          "name": "Cost Profile",
+          "icon": "menu-icon tf-icons ti ti-apps",
+          "slug": "cost-profile",
+          "url": "cost-profile"
+
       }
 
 

@@ -120,13 +120,7 @@ class DepartmentList extends Component
 
             ]
         );
-        //Add Data into Post table Data
-//        $record = new Department();
-//        $record->name = $this->name;
-//        $record->default = 0;
-//        $record->tenant_id=Auth::user()->current_team_id;
-//        $record->updated_by=Auth::id();
-//        $record->save();
+
 
 
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('display_icon')->nullable();
             $table->string('display_icon_colour')->nullable();
             $table->integer('tenant_id');
+            $table->integer('is_default');
             $table->integer('updated_by')->nullable();
             $table->timestamps();
         });

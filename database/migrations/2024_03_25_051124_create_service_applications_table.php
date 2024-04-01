@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('display_description')->nullable();
             $table->boolean('status')->default(1);
             $table->unsignedBigInteger('tenant_id');
-            $table->foreign('tenant_id')->on('teams')->references('id');
             $table->decimal('cost',10,5);
             $table->integer('is_one_time_payment')->default('0');
             $table->integer('is_cost_per_core')->default('0');

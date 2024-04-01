@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('cost',10,2)->default('1');
             $table->string('os_type')->nullable();
             $table->integer('updated_by')->nullable();
+            $table->integer('is_default')->nullable();
 
             $table->timestamps();
         });

@@ -34,6 +34,7 @@ Route::middleware([
   Route::get('/environment', \App\Livewire\Management\Environment::class)->name('environment');
   Route::get('/tier', \App\Livewire\Management\Tier::class)->name('tier');
   Route::get('/operating-system', \App\Livewire\Management\OperatingSystem::class)->name('operating-system');
+  Route::get('/cost-profile', \App\Livewire\Management\CostProfile::class)->name('cost-profile');
   Route::resource('/user-list', UserManagement::class);
 
     Route::get('/departments', function () {
