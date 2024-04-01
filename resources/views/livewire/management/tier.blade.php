@@ -186,10 +186,6 @@
                         'displayName' => 'Display Name'
                     ])
                     @include('livewire.includes.table-sortable-th',[
-                        'name' => 'cost',
-                        'displayName' => 'Cost'
-                    ])
-                    @include('livewire.includes.table-sortable-th',[
                         'name' => 'status',
                         'displayName' => 'Publish'
                     ])
@@ -212,14 +208,16 @@
 
                         <td>
                             <div class="d-flex justify-content-left align-items-center">
-                                <div class="d-flex flex-column"><a
-                                        class=" text-truncate text-body"
-                                    ><span
-                                            class="fw-bolder">  {{ $data->display_name }}</span></a><small class="emp_post text-muted">
-                                        {{ $data->display_description }}</small></div>
+                                <div class="d-flex flex-column">
+                                    <a class="text-truncate text-body">
+                                        <span class="fw-bolder">  {{ $data->display_name }}</span>
+                                    </a>
+                                    <small class="emp_post text-muted">
+                                        {{ $data->display_description }}
+                                    </small>
+                                </div>
                             </div>
                         </td>
-                        <td>$ {{ $data->cost}}</td>
 
                         <td><span
 
