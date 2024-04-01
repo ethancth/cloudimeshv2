@@ -40,6 +40,13 @@
           "slug": "tier",
           "url": "tier"
 
+      },
+      {
+          "name": "Operating System",
+          "icon": "menu-icon tf-icons ti ti-apps",
+          "slug": "operating-system",
+          "url": "operating-system"
+
       }
 
 
