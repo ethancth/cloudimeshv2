@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Department;
+namespace App\Livewire\Project;
 
 use App\Models\Department;
-use App\Models\Team;
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -12,9 +12,9 @@ use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
-class DepartmentList extends Component
+class ProjectDetail extends Component
 {
-
+    public $project,$slug;
 
     use WithPagination, WithoutUrlPagination, LivewireAlert;
     protected $paginationTheme = 'bootstrap';
@@ -25,7 +25,7 @@ class DepartmentList extends Component
     public $is_default_department=0;
     public $edit_id;
 
-    public  $name, $status, $description ,$add_btn_title= 'Create New Department',$canvas_title='New Record';
+    public  $name, $status, $description ,$add_btn_title= 'New Server',$canvas_title='New Record';
 
     #[Url(history:true)]
     public $search = '';
@@ -149,27 +149,23 @@ class DepartmentList extends Component
         $this->dispatch('close-canvas');
         $this->dispatch('swal:modal',[
             'type'=>'success',
-            'title'=>'Department Updated Successfully',
+            'title'=>'Department Created Successfully',
             'text'=>'',
         ]);
 
     }
     #[Layout('content.app')]
-    public function render()
+    public function render(Project $project)
     {
 
-        $team=Team::find(Auth::user()->current_team_id);
-
-//dump($this->selectedmember);
-        return view('livewire.department.department-list',
-            [
-                'teams' => $team->allUsers(),
-                'departments' => Department::search($this->search)
-                    ->where('tenant_id','=',Auth::user()->current_team_id)
-                    ->orderBy($this->sortBy,$this->sortDir)
-                    ->Paginate($this->perPage)
-            ]
-        )->layout('content.app');;
+        return view('livewire.project.project-detail',[
+            'data'=>$this->project->server
+        ]);
     }
 
+    public function mount($id)
+    {
+        $this->project = Project::findOrFail($id);
+        $this->slug=$id;
+    }
 }

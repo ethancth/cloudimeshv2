@@ -116,7 +116,10 @@ class Project extends Model
   {
     return $query;
   }
-
+    public function server()
+    {
+        return $this->hasMany(ProjectServer::class,'project_id','id')->where('is_delete','=','0');
+    }
 
 
 }

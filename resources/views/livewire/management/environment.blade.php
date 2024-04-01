@@ -2,7 +2,8 @@
 
 
 
-    <div wire:ignore.self class="modal fade" id="createProjectModal" tabindex="-1" role="dialog"
+
+    <div wire:ignore.self class="modal fade" id="createEnvironmentModal" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -11,21 +12,21 @@
                 </div>
                 <div class="modal-body px-sm-5 pb-5">
                     <div class="text-center mb-2">
-                        <h2 class="mb-1">Create New Project</h2>
+                        <h2 class="mb-1">Create New Environment</h2>
                     </div>
-                    <form wire:submit.prevent="storeProject">
+                    <form wire:submit.prevent="store">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="col-12">
-                            <label class="form-label" for="modalProjectName">Project Name </label>
-                            <input type="text" placeholder="Project Name" autofocus id="name" class="form-control"
-                                   wire:model="name">
-                            @error('name')
+                            <label class="form-label" for="modalEnvironmentName">Environment Name </label>
+                            <input type="text" placeholder="Environment Name" autofocus id="title" class="form-control"
+                                   wire:model="title">
+                            @error('title')
                             <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
                             @enderror
                         </div>
 
                         <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary mt-2 me-1">Create Project</button>
+                            <button type="submit" class="btn btn-primary mt-2 me-1">Create Environment</button>
                             <button type="reset" class="btn btn-outline-secondary mt-2" data-dismiss="modal"
                                     aria-label="Close">
                                 Discard
@@ -74,7 +75,7 @@
                         </div>
                         <button class="btn btn-secondary mb-3 mx-3  btn-primary waves-effect waves-light" tabindex="0"
                                 aria-controls="DataTables_Table_0" type="button" data-toggle="modal"
-                                data-target="#createProjectModal"><span><i class="ti ti-plus me-0 me-sm-1"></i><span
+                                data-target="#createEnvironmentModal"><span><i class="ti ti-plus me-0 me-sm-1"></i><span
                                     class="d-none d-sm-inline-block">{{$add_btn_title}}</span></span></button>
                     </div>
                 </div>
@@ -86,11 +87,11 @@
                 <tr>
                     @include('livewire.includes.table-sortable-th',[
                         'name' => 'status',
-                        'displayName' => 'Status'
+                        'displayName' => 'Type'
                     ])
                     @include('livewire.includes.table-sortable-th',[
-                        'name' => 'title',
-                        'displayName' => 'Project'
+                        'name' => 'name',
+                        'displayName' => 'Name'
                     ])
                     @include('livewire.includes.table-sortable-th',[
                         'name' => 'price',
@@ -108,21 +109,16 @@
                 <tbody class="table-border-bottom-0">
 
 
-                @foreach ($projects as $project)
-                    <tr wire:key="{{ $project->id }}">
-                        <td><span class="badge bg-label-info me-1">Draft</span></td>
-                        <td><span class="fw-medium" wire:click="viewProjectDetail({{$project->id}})">  {{ $project->title }}</span></td>
-                        <td>$ {{ $project->price}}</td>
-                        <td>{{ $project->created_at->diffForHumans() }}</td>
+                @foreach ($datas as $data)
+                    <tr wire:key="{{ $data->id }}">
+                        <td><span class="badge bg-label-info me-1">{{ $data->default_type  }}</span></td>
+                        <td><span class="fw-medium">  {{ $data->display_name }}</span></td>
+                        <td>$ {{ $data->status}}</td>
+                        <td>{{ $data->created_at->diffForHumans() }}</td>
 
                         <td>
-                            <a wire:navigate.click href="{{ route('project.detail', ['id' => $project  ->id,'slug'=>$project->title]) }}"><i
-                                    class="ti ti-search me-1"></i></a>
-
-                            <a wire:click="deleteConfirm({{ $project->id }})"><i
+                            <a wire:click="deleteConfirm({{ $data->id }})"><i
                                     class="ti ti-trash me-1"></i></a>
-
-
                         </td>
                     </tr>
                 @endforeach
@@ -131,7 +127,7 @@
         </div>
         <div class="py-4 px-3">
 
-            {{ $projects->links() }}
+            {{ $datas->links() }}
         </div>
     </div>
 

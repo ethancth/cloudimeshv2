@@ -26,6 +26,13 @@
           "slug": "service-application",
           "url": "service-application"
 
+      },
+      {
+          "name": "Environment",
+          "icon": "menu-icon tf-icons ti ti-users",
+          "slug": "environment",
+          "url": "environment"
+
       }
 
 

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ServiceApplication extends Model
 {
+    protected $casts=[
+        'cost' => 'decimal:2',
+    ];
     use HasFactory;
     public $fillable=['display_name',
         'display_description',
@@ -20,6 +23,7 @@ class ServiceApplication extends Model
         'is_cost_per_core',
         'cpu_amount',
         'is_default',
+        'updated_by',
     ];
 
     public function tenant(){
@@ -32,5 +36,18 @@ class ServiceApplication extends Model
 
     public function getDefaultTypeAttribute(){
         return $this->is_default ? 'Default' : 'Custom';
+    }
+
+    public function getPublishStatusAttribute()
+    {
+        return $this->status ? 'Active' : 'InActive';
+    }
+    public function getLastUpdateAttribute(){
+        if($this->updated_by==0){
+            return "System";
+        }else{
+            return User::find($this->updated_by)->first()->name;
+        }
+
     }
 }

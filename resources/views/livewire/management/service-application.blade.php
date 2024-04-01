@@ -1,42 +1,98 @@
-<div class="card">
+<div class="">
 
 
-
-    <div wire:ignore.self class="modal fade" id="createServiceApplicationModal" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-transparent">
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+    <div wire:ignore.self class="offcanvas offcanvas-end" tabindex="-1" id="offcanvascreate"
+         aria-labelledby="offcanvascreateLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvascreateLabel" class="offcanvas-title">{{$canvas_title}}</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body mx-0 flex-grow-0">
+            <form wire:submit.prevent="store">
+                <input class="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="mb-1">
+                    <label class="form-label" for="name">Name </label>
+                    <input type="text" placeholder="Service Application Name" autofocus id="name" class="form-control"
+                           wire:model="name">
+                    @error('name')
+                    <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                    @enderror
                 </div>
-                <div class="modal-body px-sm-5 pb-5">
-                    <div class="text-center mb-2">
-                        <h2 class="mb-1">Create New ServiceApplication</h2>
-                    </div>
-                    <form wire:submit.prevent="store">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="col-12">
-                            <label class="form-label" for="modalServiceApplicationName">Service Application Name </label>
-                            <input type="text" placeholder="ServiceApplication Name" autofocus id="title" class="form-control"
-                                   wire:model="title">
-                            @error('title')
-                            <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
-                            @enderror
-                        </div>
 
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary mt-2 me-1">Create ServiceApplication</button>
-                            <button type="reset" class="btn btn-outline-secondary mt-2" data-dismiss="modal"
-                                    aria-label="Close">
-                                Discard
-                            </button>
-                        </div>
-                    </form>
+                <div class="mb-1">
+                    <label class="form-label" for="display_name">Display Name </label>
+                    <input type="text" placeholder="Display Name" autofocus id="display_name" class="form-control"
+                           wire:model="display_name">
+                    @error('display_name')
+                    <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                    @enderror
                 </div>
-            </div>
+
+                <div class="mb-1">
+                    <label class="form-label" for="cost">Cost </label>
+                    <input type="number" step="any" placeholder="Cost" autofocus id="cost" class="form-control"
+                           wire:model="cost">
+                    @error('cost')
+                    <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="mb-1">
+                    <label class="form-label" for="status">Publish </label>
+                    <select placeholder="is Publish?" autofocus id="status" class="form-control"
+                            wire:model="status">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                    @error('status')
+                    <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                    @enderror
+                </div>
+
+
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary mt-2 me-1">Create</button>
+                    <button type="reset" class="btn btn-outline-secondary mt-2 btn-ac-canvas"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close">
+                        Discard
+                    </button>
+                </div>
+
+            </form>
+
         </div>
     </div>
 
+
+    @script
+    <script>
+        window.addEventListener('close-canvas', event => {
+            // $('#createDepartmentModal').modal('hide');
+            $('.btn-ac-canvas').click();
+
+        });
+
+        window.addEventListener('swal:confirm', event => {
+            Swal.fire({
+                icon: event.detail[0].type,
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                confirmButtonText: 'Yes, Delete It',
+                customClass: {
+                    confirmButton: 'btn btn-primary me-3',
+                    cancelButton: 'btn btn-label-secondary'
+                },
+            }).then((willDelete) => {
+                    if (willDelete.value) {
+                        Livewire.dispatch('delete', {id: event.detail[0].id})
+                    }
+                }
+            )
+            ;
+        });
+    </script>
+    @endscript
 
 
     <h5 class="card-header"></h5>
@@ -72,10 +128,12 @@
                     <div class="">
                         <div class="btn-group">
                         </div>
-                        <button class="btn btn-secondary mb-3 mx-3  btn-primary waves-effect waves-light" tabindex="0"
-                                aria-controls="DataTables_Table_0" type="button" data-toggle="modal"
-                                data-target="#createServiceApplicationModal"><span><i class="ti ti-plus me-0 me-sm-1"></i><span
-                                    class="d-none d-sm-inline-block">{{$add_btn_title}}</span></span></button>
+
+                        <button wire:click="click_add()"
+                                class="btn btn-secondary mb-2 mx-3 btn-primary waves-effect waves-light" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvascreate"
+                                aria-controls="offcanvascreate">{{$add_btn_title}}</button>
+
                     </div>
                 </div>
             </div>
@@ -85,20 +143,24 @@
                 <thead>
                 <tr>
                     @include('livewire.includes.table-sortable-th',[
-                        'name' => 'status',
-                        'displayName' => 'Type'
-                    ])
-                    @include('livewire.includes.table-sortable-th',[
                         'name' => 'name',
                         'displayName' => 'Name'
                     ])
                     @include('livewire.includes.table-sortable-th',[
-                        'name' => 'price',
+                        'name' => 'display_name',
+                        'displayName' => 'Display Name'
+                    ])
+                    @include('livewire.includes.table-sortable-th',[
+                        'name' => 'cost',
                         'displayName' => 'Cost'
                     ])
                     @include('livewire.includes.table-sortable-th',[
-                        'name' => 'created_at',
-                        'displayName' => 'Create At'
+                        'name' => 'status',
+                        'displayName' => 'Publish'
+                    ])
+                    @include('livewire.includes.table-sortable-th',[
+                        'name' => 'updated_at',
+                        'displayName' => 'Updated At'
                     ])
                     <th scope="col" class="px-4 py-3">
                         <span class="sr-only">Actions</span>
@@ -110,14 +172,26 @@
 
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
-                        <td><span class="badge bg-label-info me-1">{{ $data->default_type  }}</span></td>
+
+                        <td><span class="fw-medium">  {{ $data->name }}</span></td>
                         <td><span class="fw-medium">  {{ $data->display_name }}</span></td>
-                        <td>$ {{ $data->status}}</td>
-                        <td>{{ $data->created_at->diffForHumans() }}</td>
+                        <td>$ {{ $data->cost}}</td>
+
+                        <td><span
+
+                                class="badge @if($data->status=='1')bg-label-success @else bg-label-warning @endif me-1">{{ $data->publish_status  }}</span>
+                        <td>{{$data->lastupdate ?? 'unknow'}} - {{ $data->updated_at->diffForHumans() }}</td>
 
                         <td>
-                            <a wire:click="deleteConfirm({{ $data->id }})"><i
-                                    class="ti ti-trash me-1"></i></a>
+
+                            <a wire:click="edit({{ $data->id }})" data-bs-toggle="offcanvas"
+                               data-bs-target="#offcanvascreate" aria-controls="offcanvascreate"><i
+                                    class="ti ti-pencil me-1"></i></a>
+
+                            @if(!$data->is_default)
+                                <a wire:click="deleteConfirm({{ $data->id }})"><i
+                                        class="ti ti-trash me-1"></i></a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

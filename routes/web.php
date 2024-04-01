@@ -19,6 +19,7 @@ Route::middleware([
 // Main Page Route
   Route::get('/', [ProjectsController::class, 'Index'])->name('laravel-example-user-management');
   Route::get('/project', [ProjectsController::class, 'Index'])->name('project');
+    Route::get('/project/detail/{id}/{slug?}', \App\Livewire\Project\ProjectDetail::class)->name('project.detail');
 
   Route::get('/dashboard/analytics', [Analytics::class, 'index'])->name('dashboard-analytics');
   Route::get('/dashboard/crm', [Crm::class, 'index'])->name('dashboard-crm');
@@ -30,6 +31,7 @@ Route::middleware([
   Route::get('/user-management', [UserManagement::class, 'UserManagement'])->name('user-management');
   Route::get('/d2', \App\Livewire\Department\DepartmentList::class)->name('departments');
   Route::get('/service-application', \App\Livewire\Management\ServiceApplication::class)->name('service-application');
+  Route::get('/environment', \App\Livewire\Management\Environment::class)->name('environment');
   Route::resource('/user-list', UserManagement::class);
 
     Route::get('/departments', function () {

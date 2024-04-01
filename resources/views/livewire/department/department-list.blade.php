@@ -81,8 +81,15 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-2 d-grid w-100">Continue</button>
-                    <button type="reset" class="btn btn-label-secondary d-grid w-100 btn-ac-canvas" data-bs-dismiss="offcanvas">Cancel</button>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary mt-2 me-1">Save</button>
+                        <button type="reset" class="btn btn-outline-secondary mt-2 btn-ac-canvas" data-bs-dismiss="offcanvas"
+                                aria-label="Close">
+                            Discard
+                        </button>
+                    </div>
+
 
                 </form>
 
@@ -178,7 +185,6 @@
 
 
         <div class="card">
-            <h5 class="card-header"></h5>
             <div class="row mx-1 mt-3 mb-2">
                 <div
                     class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
@@ -209,6 +215,7 @@
                         <div class="">
                             <div class="btn-group">
                             </div>
+
 
 
                             <button class="btn btn-secondary mb-2 mx-3 btn-primary waves-effect waves-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCD" aria-controls="offcanvasCD">{{$add_btn_title}}</button>
@@ -256,7 +263,7 @@
                             @endif
                             <td><span class="fw-medium">  {{ $record->name }}</span></td>
                             <td>0</td>
-                            <td>{{$record->lastupdate ?? 'unknow'}} - {{ $record->created_at->diffForHumans() }}</td>
+                            <td>{{$record->lastupdate ?? 'unknow'}} - {{ $record->updated_at->diffForHumans() }}</td>
 
                             <td>
 

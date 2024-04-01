@@ -17,7 +17,6 @@ class ServiceApplication extends Component
     #[Layout('content.app')]
     public function render()
     {
-
         return view('livewire.management.service-application',
             [
                 'datas' => ModelServiceApplication::search($this->search)
@@ -32,9 +31,10 @@ class ServiceApplication extends Component
     use WithPagination, WithoutUrlPagination, LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
-    public $add_btn_title='Add Service Application';
+    public $add_btn_title='Add Service Application',$canvas_title='New Record',$set_display_name='Service Application',$edit_id;
 
-    public  $title, $status, $description;
+
+    public  $name,$display_name, $status, $description,$cost,$_is_one_time_payment,$is_cost_per_core,$cpu_amount;
 
     #[Url(history:true)]
     public $search = '';
@@ -92,42 +92,81 @@ class ServiceApplication extends Component
     }
 
 
+    public function click_add(){
+        $this->canvas_title = 'New Record';
+    }
+
+    public function edit($id){
+        $this->resetValidation();
+
+        $record=ModelServiceApplication::where('id','=',$id)->first();
+        $this->edit_id=$record->id;
+
+        $this->canvas_title = 'Edit Record';
+
+        $this->name=$record->name;
+        $this->display_name=$record->display_name;
+        $this->cost=$record->cost;
+        $this->status=$record->status;
+    }
 
 
     public function store()
     {
         //on form submit validation
         $this->validate([
-            'title' => 'required|max:100|min:5|unique:projects,title,NULL,id,user_id,'  . auth()->id(),
+            'name' => 'required|max:100|min:5|unique:service_applications,name,'.$this->edit_id.',id,tenant_id,'.Auth::user()->current_team_id,
+            'display_name' => 'required|max:100|min:5',
+            'cost' => 'required|numeric|max:9999|min:0',
+            'status' => 'required|in:0,1',
         ],
 
             [
-                'title.required' => 'The project name field is required.',
-                'title.min' => 'Project Name Should be Minimum of 5 Character.',
-                'title.max' => 'Project Name Must not be greater than 100 characters.',
-                'title.unique' => 'Project Name has already been taken.'
+                'name.required' => 'The '.$this->set_display_name.' name field is required.',
+                'status.required' => 'The publish selected option is required.',
+                'name.min' => $this->set_display_name.' Name Should be Minimum of 5 Character.',
+                'name.max' => $this->set_display_name.' Name Must not be greater than 100 characters.',
+                'name.unique' => $this->set_display_name.' Name has already been taken.'
             ]
         );
 
-        //Add Data into Post table Data
-        $data = new ModelServiceApplication();
-        $data->title = $this->title;
-        $data->status = 1;
-        $data->user_id=Auth::id();
-        $data->tenant_id=Auth::user()->current_team_id;
-        $data->save();
-        $this->dispatch('closeModal');
-//    $this->alert('success', 'Successfully Create Project');
+
+
+        $record=ModelServiceApplication::updateOrCreate(
+            [
+                'id' => $this->edit_id,
+            ],
+            [
+                'name' => $this->name,
+                'display_name' => $this->display_name,
+                'display_description' => $this->display_name,
+                'cost' => $this->cost,
+                'is_one_time_payment' => '1',
+                'status' => $this->status,
+                'tenant_id' =>  Auth::user()->current_team_id,
+                'updated_by' =>Auth::id(),
+
+            ]
+        );
+        if($this->edit_id){
+            $_store_status='Updated';
+        }else{
+            $_store_status='Created';
+        }
+        $this->dispatch('close-canvas');
         $this->title = '';
-        //For hide modal after add posts success
+
         $this->dispatch('swal:modal',[
             'type'=>'success',
-            'title'=>'Successfully Delete Service Application',
-            'text'=>$data->title,
+            'title'=>'Successfully '.$_store_status.' '.$this->set_display_name,
+            'text'=>$record->name,
         ]);
 
 
 
+        $this->id = '';
+        $this->edit_id = '';
+        $this->resetValidation();
     }
 
 }

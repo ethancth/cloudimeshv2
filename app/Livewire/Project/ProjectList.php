@@ -115,6 +115,12 @@ class ProjectList extends Component
 
   }
 
+    public function viewProjectDetail($id)
+    {
+        // Navigate to UserProfile component with the user ID parameter
+        return redirect()->route('project.detail', ['id' => $id]);
+    }
+
   public function render()
   {
    // return view('livewire.project.project-list',

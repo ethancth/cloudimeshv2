@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('project_servers', function (Blueprint $table) {
+            $table->id();
+            $table->integer('project_id');
+            $table->integer('owner');
+            $table->string('hostname');
+            $table->string('operating_system');
+            $table->string('operating_system_option')->nullable();
+            $table->string('tier');
+            $table->string('environment');
+            $table->integer('v_cpu');
+            $table->decimal('cpu_price',10,5)->nullable();
+            $table->integer('v_memory');
+            $table->decimal('memory_price',10,5)->nullable();
+            $table->integer('total_storage');
+            $table->decimal('storage_price',10,5)->nullable();
+            $table->string('tag')->nullable();
+            $table->decimal('price',10,2)->nullable();
+            $table->decimal('price_actual',10,5)->nullable();
+            $table->boolean('is_delete')->default(0);
+            $table->string('is_vm_provision')->default('0');
+            $table->string('vm_power_status')->default('0');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('project_servers');
+    }
+};
