@@ -77,8 +77,9 @@
                     <label class="form-label" for="status">Publish </label>
                     <select placeholder="is Publish?" autofocus id="status" class="form-control"
                             wire:model="status">
-                        <option value="0">No</option>
                         <option value="1">Yes</option>
+                        <option value="0">No</option>
+
                     </select>
                     @error('status')
                     <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
