@@ -24,7 +24,7 @@ class ServiceApplication extends Component
                     ->orderBy($this->sortBy,$this->sortDir)
                     ->Paginate($this->perPage)
             ]
-        )->layout('content.app');;
+        )->layout('content.app');
     }
 
 

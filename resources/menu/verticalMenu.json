@@ -54,6 +54,13 @@
           "slug": "cost-profile",
           "url": "cost-profile"
 
+      },
+      {
+          "name": "Form Policies",
+          "icon": "menu-icon tf-icons ti ti-apps",
+          "slug": "form-policy",
+          "url": "form-policy"
+
       }
 
 

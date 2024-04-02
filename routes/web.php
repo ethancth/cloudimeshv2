@@ -35,6 +35,7 @@ Route::middleware([
   Route::get('/tier', \App\Livewire\Management\Tier::class)->name('tier');
   Route::get('/operating-system', \App\Livewire\Management\OperatingSystem::class)->name('operating-system');
   Route::get('/cost-profile', \App\Livewire\Management\CostProfile::class)->name('cost-profile');
+  Route::get('/form-policy', \App\Livewire\Management\FormPolicy::class)->name('form-policy');
   Route::resource('/user-list', UserManagement::class);
 
     Route::get('/departments', function () {

@@ -1,37 +1,5 @@
 <div>
 
-    <!-- Create Department Modal -->
-    <div wire:ignore.self class="modal fade modal-end" id="createDepartmentModal" data-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-transparent">
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body px-sm-5 pb-5">
-                    <div class="text-center mb-2">
-                        <h2 class="mb-1">Create New Department</h2>
-                    </div>
-                    <form wire:submit.prevent="storeDepartment">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="col-12">
-                            <label class="form-label" for="modalDepartmentName">Department Name </label>
-                            <input type="text" placeholder="Department Name" autofocus id="name" class="form-control" wire:model="name">
-                            @error('name')
-                            <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary mt-2 me-1">Create Department</button>
-                            <button type="reset" class="btn btn-outline-secondary mt-2" data-dismiss="modal" aria-label="Close">
-                                Discard
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

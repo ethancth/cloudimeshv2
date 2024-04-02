@@ -30,13 +30,15 @@ class ServiceApplication extends Model
         return $this->belongsTo(team::class,'tenant_id');
     }
 
-    public function scopeSearch($query, $value){
-        $query->where('display_name','like',"%{$value}%")->orWhere('cost','like',"%{$value}%")->where('tenant_id','=',Auth::user()->current_tenant_id);
-    }
 
     public function getDefaultTypeAttribute(){
         return $this->is_default ? 'Default' : 'Custom';
     }
+
+    public function scopeSearch($query, $value){
+        $query->where('display_name','like',"%{$value}%")->orWhere('cost','like',"%{$value}%")->where('tenant_id','=',Auth::user()->current_tenant_id);
+    }
+
 
     public function getPublishStatusAttribute()
     {
