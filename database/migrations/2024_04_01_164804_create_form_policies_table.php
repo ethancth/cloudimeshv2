@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('form_policies', function (Blueprint $table) {
             $table->id();
             $table->string('env_field')->nullable();
-            $table->string('search_field')->nullable();
+            $table->mediumText('search_field')->nullable();
             $table->string('tier_field')->nullable();
             $table->string('os_field')->nullable();
             $table->string('mandatory_field')->nullable();

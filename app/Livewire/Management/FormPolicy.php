@@ -22,13 +22,6 @@ class FormPolicy extends Component
     #[Layout('content.app')]
     public function render()
     {
-
-        $r = ModelFormPolicy::search($this->search)
-            ->where('tenant_id','=',Auth::user()->current_team_id)
-        ->orderBy($this->sortBy,$this->sortDir)
-        ->torawsql();
-
-
         return view('livewire.management.form-policy',[
             'datas' => ModelFormPolicy::search($this->search)
                 ->where('tenant_id','=',Auth::user()->current_team_id)
@@ -95,7 +88,6 @@ class FormPolicy extends Component
         $model= \App\Models\FormPolicy::where('id','=',$id)->first();
         $model->delete();
 
-//    $this->flash('success', 'Successfully Delete Project '.$project->title );
         $this->dispatch('swal:modal',[
             'type'=>'success',
             'title'=>'Successfully Delete Policy',
@@ -121,6 +113,8 @@ class FormPolicy extends Component
     public function click_add(){
         $this->canvas_title = 'New Record';
         $this->canvas_btn_title='Create';
+        $this->edit_id='';
+        $this->id = '';
         $this->resetValidation();
         $this->dispatch('clear-canvas');
     }
@@ -165,7 +159,7 @@ class FormPolicy extends Component
             'os_field' => 'required|in:'.implode(',', $osValues),
             'mandatory_field'=>'required',
             'optional_field'=>'required',
-            'status' => 'required|in:0,1',
+            'status' => 'in:0,1',
         ],
 
             [
@@ -202,6 +196,9 @@ class FormPolicy extends Component
 
             ]
         );
+        $_search_field= ' | '.$record->sa_man_name . ' | '. $record->sa_opt_name. ' | '. $record->env_name. ' | '. $record->tier_name. ' | '. $record->os_name. ' | '. $record->publish_status;
+        $record->search_field=$_search_field;
+        $record->save();
         if($this->edit_id){
             $_store_status='Updated';
         }else{
