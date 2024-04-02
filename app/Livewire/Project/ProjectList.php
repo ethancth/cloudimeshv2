@@ -18,7 +18,7 @@ class ProjectList extends Component
   protected $listeners = ['delete'];
   public $add_btn_title='Add Project';
 
-  public  $title, $status, $description;
+  public  $title, $status, $description,$name;
 
   #[Url(history:true)]
   public $search = '';
@@ -94,22 +94,28 @@ class ProjectList extends Component
     );
 
     //Add Data into Post table Data
-    $project = new Project();
-      $project->title = $this->title;
-      $project->status = 1;
-      $project->user_id=Auth::id();
-      $project->updated_by=Auth::id();
-      $project->tenant_id=Auth::user()->current_team_id;
-      $project->save();
+
+      $project =Project::create([
+          'title' =>$this->title,
+          'status'=>1,
+          'user_id'=>Auth::id(),
+          'updated_by'=>Auth::id(),
+          'tenant_id'=>Auth::user()->current_team_id,
+
+      ]);
+
       $this->dispatch('closeModal');
 //    $this->alert('success', 'Successfully Create Project');
     $this->title = '';
     //For hide modal after add posts success
     $this->dispatch('swal:modal',[
       'type'=>'success',
-      'title'=>'Successfully Delete Project',
+      'title'=>'Successfully Create Project',
       'text'=>$project->title,
+        'url'=>'/project/detail/'.$project->id.'/'.$project->title,
     ]);
+
+
 
 
 

@@ -11,11 +11,9 @@ class Project extends Model
 {
     use HasFactory;
 
-  public $incrementing = false;
-
 
   protected $fillable = [
-    'updated_by','title', 'owner','created_at', 'updated_at', 'slug','price','total_cpu','total_memory','total_server','total_server_on','total_storage','company_id','price_actual'
+    'updated_by','user_id','tenant_id','title', 'owner','created_at', 'updated_at', 'slug','price','total_cpu','total_memory','total_server','total_server_on','total_storage','company_id','price_actual'
   ];
 
 

@@ -30,13 +30,16 @@
     })
     window.addEventListener('swal:modal',event=>{
 
+        console.log(event);
       Swal.fire({
         icon: 'success',
-        title: event.detail.title,
+        title: event.detail[0].title,
         text: 'Project Created Successfully.',
         customClass: {
           confirmButton: 'btn btn-success'
         }
+      }).then(function() {
+          window.location = event.detail[0].url;
       });
     });
     window.addEventListener('swal:confirm',event=>{

@@ -17,9 +17,9 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="col-12">
                             <label class="form-label" for="modalProjectName">Project Name </label>
-                            <input type="text" placeholder="Project Name" autofocus id="name" class="form-control"
-                                   wire:model="name">
-                            @error('name')
+                            <input type="text" placeholder="Project Name" autofocus class="form-control"
+                                   wire:model="title">
+                            @error('title')
                             <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
                             @enderror
                         </div>
